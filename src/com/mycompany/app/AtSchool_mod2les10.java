@@ -29,7 +29,8 @@ public class AtSchool_mod2les10 {
         System.out.println("Вычитание чисел BigDecimal " + x3 + " и " + x4 + " = " + x3.subtract(x4));
         System.out.println("Умножение чисел BigDecimal " + x3 + " и " + x4 + " = " + x3.multiply(x4));
         System.out.println("Остаток от деления чисел BigDecimal " + x4 + " и " + x3 + " = " + x4.remainder(x3));
-        //вывовдит Arithmetic Exception - Nonterminating decimal expansion; no exact representable decimal result
+        //код ниже вывовдит Arithmetic Exception - Nonterminating decimal expansion;
+        //no exact representable decimal result
         try {
             System.out.println("Деление   чисел BigDecimal " + x4 + " и " + x3 + " = " + x4.divide((x3)));
         }
@@ -37,7 +38,8 @@ public class AtSchool_mod2les10 {
             //если ловим исключение, то округляем вывод, чтобы не получить ошибку
             System.out.println("Деление   чисел BigDecimal " + x4 + " и " + x3 + " = " + x4.divide((x3), 10,
                     RoundingMode.HALF_UP));
-            //System.out.println("Sorry divide result is too large. Please try again with another input data");
         }
+        //обработку исключеий просто захотелось попробовать сделать, в данном случае, наврное, лишнее,
+        //Idea сама обращает внимание warning'ом, что деление BigDecimal выполняется без округления.
     }
 }
