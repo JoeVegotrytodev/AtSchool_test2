@@ -1,13 +1,13 @@
 package mod2les25;
 
 import java.text.DateFormat;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 import static java.time.format.DateTimeFormatter.ISO_ORDINAL_DATE;
 import static java.time.format.DateTimeFormatter.ISO_DATE;
 import static java.time.format.DateTimeFormatter.ISO_LOCAL_TIME;
@@ -17,8 +17,6 @@ import static java.time.format.DateTimeFormatter.ISO_OFFSET_DATE;
 import static java.time.format.DateTimeFormatter.ISO_OFFSET_TIME;
 import static java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 import java.util.concurrent.TimeUnit;
 
 public class FirstTask {
@@ -27,31 +25,29 @@ public class FirstTask {
         Date startDate = new Date();
 
         System.out.println("--- Class Date ---");
-        Date birthDayDate = new Date(98, Calendar.AUGUST, 4, 00, 00, 00);
+
+        //3. Заменил 00 на 0  в датах
+        Date birthDayDate = new Date(98, Calendar.AUGUST, 4, 0, 0, 0);
         System.out.println("Первый вывод: " + birthDayDate);
+        //System.out.println("Первый вывод: " + new Date(98, Calendar.AUGUST, 4,0,0,0));
         Date endClassDateExe = new Date();
 
-        String pattern = new String("yyyy-MM-dd 'T'HH:mm:ss.SSSZ" );
-        String birthDate = new SimpleDateFormat(pattern).format(birthDayDate);
-        System.out.println("Второй вывод: " + birthDate);
-
-        pattern = "dd-MM-yyyy hh:mm:ss.SSSz";
-        birthDate = new SimpleDateFormat(pattern).format(birthDayDate);
-        System.out.println("Третий вывод: " + birthDate);
-
-        pattern = "G YYYY ww DDD";
-        birthDate = new SimpleDateFormat(pattern).format(birthDayDate);
-        System.out.println("Четвертый вывод: " + birthDate);
-
-        pattern = "E_u_a_k_X";
-        birthDate = new SimpleDateFormat(pattern).format(birthDayDate);
-        System.out.println("Пятый вывод: " + birthDate + "\n");
+        //1. изменил pattern - строка 38 закомментирована
+        //2. изменил sout - пробежался по коду, вроде в остальных местах созданные объекты используются далее несколько
+        // раз, в таких случаях удобнее создавать переменную
+        //String pattern = "yyyy-MM-dd 'T'HH:mm:ss.SSSZ";
+        //String birthDate = new SimpleDateFormat(pattern).format(birthDayDate);
+        System.out.println("Второй вывод: " + new SimpleDateFormat("yyyy-MM-dd 'T'HH:mm:ss.SSSZ").format(birthDayDate));
+        System.out.println("Третий вывод: " + new SimpleDateFormat("dd-MM-yyyy hh:mm:ss.SSSz").format(birthDayDate));
+        System.out.println("Четвертый вывод: " + new SimpleDateFormat("G YYYY ww DDD").format(birthDayDate));
+        System.out.println("Пятый вывод: " + new SimpleDateFormat("E_u_a_k_X").format(birthDayDate) + "\n");
 
 
         Date localDateStart = new Date();
         System.out.println("--- Class LocalDate ---");
         LocalDate birthDayLocalDate = LocalDate.of(1998,8,4);
         System.out.println("Первый вывод: " + birthDayLocalDate);
+        //System.out.println("Первый вывод: " + LocalDate.of(1998,8,4));
 
         System.out.println("Второй вывод: " + birthDayLocalDate.getMonthValue() + "/"
                 + birthDayLocalDate.getDayOfMonth() + "/" + birthDayLocalDate.getEra());
