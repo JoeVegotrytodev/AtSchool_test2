@@ -1,21 +1,22 @@
 package mod2les31;
 
 public class Task3 {
-    static boolean flag = false;
-    static int a;
-    static int b;
+//    static boolean flag = false;
+    int a;
+    int b;
 
     public static void main(String[] args) {
-        a = Integer.parseInt(args[0]);
-        b = Integer.parseInt(args[1]);
-        System.out.println("Дано: a =  " + a + ", b = " + b);
+        Task3 task3 = new Task3();
+        task3.a = Integer.parseInt(args[0]);
+        task3.b = Integer.parseInt(args[1]);
 
-        isInteger(a,b);
+        System.out.printf("Дано: a =  %s, b = %d", task3.a, task3.b);
 
-        System.out.println("\n" + flag);
+        isInteger(task3.a,task3.b);
+        System.out.println("\n" + task3.isInteger(task3.a,task3.b));
     }
 
-    static void isInteger(int num1, int num2){
-        flag = (a % b) == 0.0;
+    static boolean isInteger(int num1, int num2){
+        return (num1 % num2) == 0.0;
     }
 }

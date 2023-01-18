@@ -6,10 +6,9 @@ public class Task2 {
         int b = 5;
         System.out.println("Дано: a =  " + a + ", b = " + b);
 
-        a = a + b;
-        b = a - b;
-        a = a - b;
+        a += b;
+        b = a- b;
+        a -= b;
         System.out.println("После перестановки: a =  " + a + ", b = " + b);
-
     }
 }
