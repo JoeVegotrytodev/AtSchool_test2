@@ -7,7 +7,6 @@ public class EntryPoint {
         System.out.println(Animal.planet);
         Animal.planet = "Moon";
 
-        Cat barsik = new Cat();
-        System.out.println(barsik.planet);
+        System.out.println(new Cat().planet);
     }
 }
