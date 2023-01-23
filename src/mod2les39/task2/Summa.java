@@ -12,12 +12,20 @@ public class Summa {
         return x + y + z;
     }
 
+    /*ошибся с пониманием задания
     double sum(double... w){
         int sum = 0;
         for(double i : w){
             sum += i;
         }
         return sum;
+    }*/
+
+    double sum(double x, double y){
+        return x + y;
+    }
+    double sum(double x, double y, double z){
+        return x + y + z;
     }
 
     double sum(double x, double y, int z){
