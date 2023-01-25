@@ -20,7 +20,7 @@ public class EntryPoint {
         System.out.println("4: " +  ob.sum(x, y, a));
         //убрали из задания
         //System.out.println("5: " +  ob.sum_double(b, a));
-        System.out.println("5: " +  ob.sum(new Integer(4),new Integer(4)));
+        System.out.println("5: " +  ob.sum(Integer.valueOf(4),Integer.valueOf(4)));
     }
 
 }

@@ -1,8 +1,8 @@
 package mod2les39.task2;
 
 public class Summa {
-    int a, b;
-    double x, y, z;
+/*    int a, b;
+    double x, y, z;*/
 
     int sum(int a, int b){
         return a + b;
@@ -29,7 +29,7 @@ public class Summa {
     }
 
     double sum(double x, double y, int z){
-        return (double)x + y + z;
+        return  y + z;
     }
 
     //назвал иначе, конфликтует с методом - int sum(int a, int b)
@@ -37,11 +37,11 @@ public class Summa {
     //их тип, и местами поменять нет смысла
     //этот метод убрали из задания
     double sum_double(int y, int z){
-        return (double)y + z;
+        return y + z;
     }
 
     double sum(Integer y, Integer z){
-        return y.doubleValue() + z.doubleValue();
+        return y + z;
     }
 
 }
