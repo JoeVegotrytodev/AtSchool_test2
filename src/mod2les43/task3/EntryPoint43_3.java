@@ -3,8 +3,10 @@ package mod2les43.task3;
 public class EntryPoint43_3 {
     public static void main(String[] args) {
         int year = Integer.parseInt(args[0]);
-
-        if ((year < 0) | (year > 3000)){
+        /*
+        добавил ноль
+         */
+        if ((year < 0) | (year > 30000)){
             System.out.println("Year out of range..");
             return;
         }

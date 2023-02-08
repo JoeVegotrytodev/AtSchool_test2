@@ -10,14 +10,17 @@ public class EntryPoint47_2 {
         }
 
         //перевел в минуты для удобства подсчета
-        int minutes = Integer.parseInt(args[0]) * 60, machinesAmount = Integer.parseInt(args[1]);
+        int machinesAmount = Integer.parseInt(args[0]);
+        int workTimeOfFirstMachine = Integer.parseInt(args[1]) * 60;
         //для хранения времени всей работы
-        int workTime = minutes;
+        int additionalMinutes = 0;
+        //подсчет общего времени
+        int workTime = workTimeOfFirstMachine;
 
         //Напишите программу, вычисляющую количество сколько часов проработала вся бригада.
-        for(; machinesAmount != 0; machinesAmount--){
-            minutes += 10;
-            workTime += minutes;
+        for(int i = 1; i < machinesAmount; i++){
+            additionalMinutes += 10;
+            workTime += (workTimeOfFirstMachine + additionalMinutes);
         }
         //Результат вычислений выведите на экран в часах и минутах.
         System.out.println("Бригада работала " + workTime / 60 + " часов " + workTime % 60 + " минут.");

@@ -13,8 +13,9 @@ public class Timer {
     static void waitSecond(){
         long currentTime = System.currentTimeMillis();
         for(;;){
-            if(currentTime == System.currentTimeMillis() + 1);
-            break;
+            long afterSecondTime =System.currentTimeMillis();
+            //System.out.println("CT " + currentTime + " aST " + afterSecondTime);
+            if(afterSecondTime >= currentTime + 1000) break;
         }
     }
 
@@ -24,14 +25,14 @@ public class Timer {
         //System.out.println(seconds / 60 + ":" + seconds % 60);
 
         //переделал так, но наверное должны быть способы попроще
-        if(((seconds / 60) < 10) & ((seconds % 60) < 10)) System.out.println("0"
-                + seconds / 60 + ":" + "0" + seconds % 60);
-        else if(((seconds / 60) >= 10) & ((seconds % 60) >= 10)) System.out.println(
-                seconds / 60 + ":" + seconds % 60);
-        else if(((seconds / 60) >= 10) & ((seconds % 60) < 10)) System.out.println(
-                seconds / 60 + ":" + "0" + seconds % 60);
-        else if(((seconds / 60) < 10) & ((seconds % 60) >= 10)) System.out.println("0"
-                + seconds / 60 + ":" + seconds % 60);
+        if(((seconds / 60) < 10) & ((seconds % 60) < 10))
+            System.out.println("0" + seconds / 60 + ":" + "0" + seconds % 60);
+        else if(((seconds / 60) >= 10) & ((seconds % 60) >= 10))
+            System.out.println(seconds / 60 + ":" + seconds % 60);
+        else if(((seconds / 60) >= 10) & ((seconds % 60) < 10))
+            System.out.println(seconds / 60 + ":" + "0" + seconds % 60);
+        else if(((seconds / 60) < 10) & ((seconds % 60) >= 10))
+            System.out.println("0" + seconds / 60 + ":" + seconds % 60);
     }
 
     //- объектный метод start() - запускает обратный отсчет
@@ -42,7 +43,6 @@ public class Timer {
             seconds--;
             waitSecond();
             printTime();
-        }while(seconds != 0);
-
+       }while(seconds != 0);
     }
 }

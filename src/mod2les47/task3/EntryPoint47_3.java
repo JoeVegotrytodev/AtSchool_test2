@@ -20,8 +20,13 @@ public class EntryPoint47_3 {
     //который выводит числа "змейкой" от 1 до n:
     //Выводимые числа разделены пробелами. - по условию пробелы , но с табуляцией красивее
     static void shakePrint(int n, int col){
-        for(; col != 0; col--) {
-            for (int i = n; i != 0; i--) System.out.print(i * col + "\t");
+        int currentNumber = 1;
+
+        for(; currentNumber <= n;) {
+            for (int i = 0; i < col; i++) {
+                System.out.print(currentNumber++ + "\t");
+                if(currentNumber == n+1) return;
+            }
             System.out.println();
         }
     }

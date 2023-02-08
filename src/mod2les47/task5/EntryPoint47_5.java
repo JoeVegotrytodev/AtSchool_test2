@@ -12,13 +12,13 @@ public class EntryPoint47_5 {
         то выводить список поддерживаемых операций и завершать программу.*/
 
         //получаем аргументы ком строки
-        int number1 = Integer.parseInt(args[0]), number2 = Integer.parseInt(args[1]);
+        int number1 = Integer.parseInt(args[0]), number2 = Integer.parseInt(args[2]);
         //String operation = args[2]; - используется лишь однажды, поэтому решил не вводить переменную
 
         //создаем экзмепляр калькулятора
         Calculator calc = new Calculator();
 
-        switch(args[2]){
+        switch(args[1]){
             case "+" :
                 System.out.println(calc.add(number1, number2)); break;
             case "-" :
