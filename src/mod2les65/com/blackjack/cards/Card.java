@@ -13,16 +13,22 @@ public class Card {
     общедоступный метод setCardType
         устанавливает значение типа карты
      */
-    public void setCardType(CardType receivedType){
+    /*public void setCardType(CardType receivedType){
         this.cardType = receivedType;
+    }*/
+    public void setCardType(CardType cardType){
+        this.cardType = cardType;
     }
 
     /*
     общедоступный метод setCardSuit
         устанавливает значение масти
      */
-    public void setCardSuite(CardSuit receivedSuit){
+    /*public void setCardSuite(CardSuit receivedSuit){
         this.cardSuit = receivedSuit;
+    }*/
+    public void setCardSuite(CardSuit cardSuit){
+        this.cardSuit = cardSuit;
     }
 
     /*
@@ -119,15 +125,19 @@ public class Card {
         switch (randomize){
             case 1 : {
                 this.setCardSuite(CardSuit.CLUBS);
+                break;
             }
             case 2 : {
                 this.setCardSuite(CardSuit.DIAMONDS);
+                break;
             }
             case 3 : {
                 this.setCardSuite(CardSuit.HEARTS);
+                break;
             }
             case 4 : {
                 this.setCardSuite(CardSuit.SPADES);
+                break;
             }
         }
     }

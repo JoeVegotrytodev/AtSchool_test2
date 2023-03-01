@@ -5,17 +5,14 @@ import mod2les65.com.fruitbase.fruits.*;
 
 public class FruitCatalogue {
     //содержит поле массив Fruit - список записей известных фруктов
-    private Fruit[] fruitList = new Fruit[4];
+    private Fruit[] fruitList;
 
     /*содержит конструктор без параметров
         при создании во внутренний массив добавляются
         записи-экзмепляры известных фруктов
      */
     public FruitCatalogue() {
-        fruitList[0] = new Apple();
-        fruitList[1] = new Banana();
-        fruitList[2] = new Orange();
-        fruitList[3] = new Pineapple();
+        fruitList = new Fruit[]{new Apple(), new Banana(), new Orange(), new Pineapple()};
     }
 
     /*

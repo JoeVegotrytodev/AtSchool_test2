@@ -43,7 +43,9 @@ public class Cargo {
     void addFruit(Fruit fruit){
         //создаем больший массив
         //System.out.println(orderedFruit.length);
-        Fruit[] plusFruit = new Fruit[10];
+        //еще тут было, поправил
+        //Fruit[] plusFruit = new Fruit[10];
+        Fruit[] plusFruit = new Fruit[orderedFruit.length + 1];
         //добавляем в него  фрукт
         plusFruit[putLoc] = fruit;
         putLoc++;
