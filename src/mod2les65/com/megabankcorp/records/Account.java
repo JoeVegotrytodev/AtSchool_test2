@@ -2,6 +2,7 @@
 package mod2les65.com.megabankcorp.records;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 public class Account {
     /*
@@ -20,6 +21,13 @@ public class Account {
     private BigDecimal currentSum;
     private long accountNumber;
     private long clientId;
+
+    public Account(int accountNumber, int clientId) {
+        currentSum = new BigDecimal(0);
+
+        this.clientId = clientId;
+        this.accountNumber = accountNumber;
+    }
 
     //получение номера счета
     public long getAccountNumber() {
