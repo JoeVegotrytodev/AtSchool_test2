@@ -31,7 +31,7 @@ public abstract class Database {
             не содержит реализации, просто сигнатура с описанием
             доступен только из пакета и реализаций
      */
-    protected abstract int getAmount(Account account);
+    protected abstract BigDecimal getAmount(Account account);
 
     /*
     - transfer - передает указанную сумму с одного указанного счета на другой
@@ -41,5 +41,5 @@ public abstract class Database {
     void transfer(BigDecimal sum, Account accountIn, Account accountOut){
         withdraw(sum,accountOut);
         deposit(sum,accountIn);
-    };
+    }
 }
