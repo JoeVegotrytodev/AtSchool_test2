@@ -34,4 +34,29 @@ public class FreshCustomer extends Customer {
             }
         }
     }
+
+    /**
+     * Добаляет фрукт в массив заказа
+     * @param fruitsArray массив в который доавбляем эл-т
+     * @param fruit       доавбляемый фрукт
+     * @param index       индекс в который ложим фрукт
+     * @return массив с доавбленным эл-том
+     */
+    private Fruit[] addFreshFruitToPurchase(Fruit[] fruitsArray, Fruit fruit, int index) {
+        //моно и напрямую в массив заказы добалдвять но и без того много исправить нужно......
+        fruitsArray[index] = fruit;
+        return fruitsArray;
+    }
+
+    /**
+     * Добаляет фрукт в массив несвежих.
+     * @param fruitsArray массив в который доавбляем эл-т
+     * @param fruit       доавбляемый фрукт
+     * @param index       индекс в который ложим фрукт
+     * @return массив с доавбленным эл-том
+     */
+    private Fruit[] addUnfreshFruitToUnlikeArray(Fruit[] fruitsArray, Fruit fruit, int index) {
+        fruitsArray[index] = fruit;
+        return fruitsArray;
+    }
 }

@@ -2,8 +2,6 @@ package mod2les65.com.fruitbase.customers;
 
 import mod2les65.com.fruitbase.fruits.Fruit;
 
-import java.util.Arrays;
-
 public class UniqueCustomer extends Customer {
 
     public UniqueCustomer(Fruit[] fruits, String name) {
@@ -69,4 +67,39 @@ public class UniqueCustomer extends Customer {
         purchases = uniqueFruits;
     }
 
+//    /**
+//     * Копирует массив и добавялет + 1 пустой эл-т
+//     * @param arrayToCopy массив который необхоидмо скопировать
+//     * @return скопированный массив с последним пустым эл-том
+//     */
+//    protected Fruit[] fruitsCopyAndPlusElement(Fruit[] arrayToCopy) {
+//        Fruit[] arrayAfterCopying = new Fruit[arrayToCopy.length + 1];
+//        int counter = 0;
+//
+//        //сделал проверку, чтобы к  0 эл-ту не обращаться
+////        if (arrayToCopy.length > 0) {
+//        for (Fruit frt : arrayToCopy) {
+//            //если это нулл эл-т то прерываем
+//            //не совсем понял этот момент правильно ли вообще так проверять
+//            if (frt == null) {
+//                break;
+//            }
+//            arrayAfterCopying[counter] = frt;
+//            counter++;
+//        }
+////        }
+//        return arrayAfterCopying;
+//    }
+
+    /**
+     * Добаляет фрукт в массив несвежих.
+     * @param fruitsArray массив в который доавбляем эл-т
+     * @param fruit       доавбляемый фрукт
+     * @param index       индекс в который ложим фрукт
+     * @return массив с доавбленным эл-том
+     */
+    protected Fruit[] addUnfreshFruitToUnlikeArray(Fruit[] fruitsArray, Fruit fruit, int index) {
+        fruitsArray[index] = fruit;
+        return fruitsArray;
+    }
 }

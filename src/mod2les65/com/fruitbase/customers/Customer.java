@@ -21,7 +21,7 @@ public abstract class Customer {
         unlikedFruits = new Fruit[0];
     }
 
-    //    имеет метод takeFruits, который должны реализовать наследникик
+//    имеет метод takeFruits, который должны реализовать наследникик
 //    метод принимает груз и сохраняет из него фрукты во внутренний массив,
 //    т.е. в грузе объекты заканчиваются.
     public abstract void takeFruits();
@@ -62,19 +62,6 @@ public abstract class Customer {
     }
 
     /**
-     * Добаляет фрукт в массив заказа
-     * @param fruitsArray массив в который доавбляем эл-т
-     * @param fruit       доавбляемый фрукт
-     * @param index       индекс в который ложим фрукт
-     * @return массив с доавбленным эл-том
-     */
-    protected Fruit[] addFreshFruitToPurchase(Fruit[] fruitsArray, Fruit fruit, int index) {
-        //моно и напрямую в массив заказы добалдвять но и без того много исправить нужно......
-        fruitsArray[index] = fruit;
-        return fruitsArray;
-    }
-
-    /**
      * Копирует массив и добавялет + 1 пустой эл-т
      * @param arrayToCopy массив который необхоидмо скопировать
      * @return скопированный массив с последним пустым эл-том
@@ -85,28 +72,16 @@ public abstract class Customer {
 
         //сделал проверку, чтобы к  0 эл-ту не обращаться
 //        if (arrayToCopy.length > 0) {
-            for (Fruit frt : arrayToCopy) {
-                //если это нулл эл-т то прерываем
-                //не совсем понял этот момент правильно ли вообще так проверять
-                if (frt == null) {
-                    break;
-                }
-                arrayAfterCopying[counter] = frt;
-                counter++;
+        for (Fruit frt : arrayToCopy) {
+            //если это нулл эл-т то прерываем
+            //не совсем понял этот момент правильно ли вообще так проверять
+            if (frt == null) {
+                break;
             }
+            arrayAfterCopying[counter] = frt;
+            counter++;
+        }
 //        }
         return arrayAfterCopying;
-    }
-
-    /**
-     * Добаляет фрукт в массив несвежих.
-     * @param fruitsArray массив в который доавбляем эл-т
-     * @param fruit       доавбляемый фрукт
-     * @param index       индекс в который ложим фрукт
-     * @return массив с доавбленным эл-том
-     */
-    protected Fruit[] addUnfreshFruitToUnlikeArray(Fruit[] fruitsArray, Fruit fruit, int index) {
-        fruitsArray[index] = fruit;
-        return fruitsArray;
     }
 }
