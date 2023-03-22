@@ -42,18 +42,13 @@ public abstract class Fruit {
 //    - метод equals
 //    - метод hashcode
 //    делал когда еше не было видео лекции, посмотрю, исправлю
+//
     @Override
     public int hashCode(){
         price = price.multiply(new BigDecimal(weight));
         int res = price.intValue();
 
-        int maxValue = 8;
-        int minValue = 1;
-        int range = maxValue - minValue + 1;
-        Random random = new Random();
-        int numOfSuits = random.nextInt(range) + minValue;
-
-        return res * numOfSuits;
+        return res;
     }
 
     @Override
