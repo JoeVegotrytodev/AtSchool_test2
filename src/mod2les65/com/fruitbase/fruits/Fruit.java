@@ -43,26 +43,42 @@ public abstract class Fruit {
 //    - метод hashcode
 //    делал когда еше не было видео лекции, посмотрю, исправлю
 //
-    @Override
-    public int hashCode(){
-        price = price.multiply(new BigDecimal(weight));
-        int res = price.intValue();
+//    @Override
+//    public int hashCode(){
+//        final int prime = 9;
+//        int result = 1;
+//
+//        result = result * prime + (name != null ? name.hashCode() : 0);
+//        result = result * prime + (freshness != null ? freshness.hashCode() : 0);
+//        result = result * prime + (price != null ? price.hashCode() : 0);
+//        return result;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if(this == obj)
+//            return true;
+//        else if(obj == null || getClass() != obj.getClass())
+//            return false;
+//
+//        Fruit objToCompare = (Fruit) obj;
+//
+//        return this.weight == objToCompare.weight &&
+//                Objects.equals(price, objToCompare.price) &&
+//                Objects.equals(name, objToCompare.name) &&
+//                Objects.equals(freshness, objToCompare.freshness);
+//    }
 
-        return res;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Fruit fruit = (Fruit) o;
+        return Double.compare(fruit.weight, weight) == 0 && Objects.equals(price, fruit.price) && Objects.equals(name, fruit.name) && freshness == fruit.freshness;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if(this == obj)
-            return true;
-        else if(obj == null || getClass() != obj.getClass())
-            return false;
-
-        Fruit objToCompare = (Fruit) obj;
-
-        return this.weight == objToCompare.weight &&
-                Objects.equals(price, objToCompare.price) &&
-                Objects.equals(name, objToCompare.name) &&
-                Objects.equals(freshness, objToCompare.freshness);
+    public int hashCode() {
+        return Objects.hash(weight, price, name, freshness);
     }
 }
