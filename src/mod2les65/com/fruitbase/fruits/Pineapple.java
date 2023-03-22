@@ -12,5 +12,6 @@ public class Pineapple extends Fruit{
         weight = 0.25;
         price = new BigDecimal(140);
         name = "Pineapple";
+        freshness = FreshState.SPOILED;
     }
 }

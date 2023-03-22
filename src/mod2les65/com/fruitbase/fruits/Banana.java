@@ -12,5 +12,6 @@ public class Banana extends Fruit{
         weight = 0.2;
         price = new BigDecimal(150);
         name = "Banana";
+        freshness = FreshState.FRESH;
     }
 }
