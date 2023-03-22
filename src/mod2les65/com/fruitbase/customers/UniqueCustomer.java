@@ -24,11 +24,12 @@ public class UniqueCustomer extends Customer {
             boolean isUnique = true;
             //проходим по уже имеющимся у покупателя фруктам
             for (int indexOfExist = 0; indexOfExist < existedFruit.length; indexOfExist++) {
+                boolean isNew = true;
 
-                //первый фрукт заказа сохраняем сразу в существующий фрукты для обращения в цикле
+                //первый фрукт заказа сохраняем сразу в существующие фрукты для обращения в цикле
                 if(indexOfPurchases == 0){
                     existedFruit[0] = purchases[0];
-//                    System.out.println("Array in iskl " + Arrays.toString(existedFruit));
+//                    System.out.println("Array in  " + Arrays.toString(existedFruit));
                     break;
                 }
 //                System.out.println("indexOfPurchases " + indexOfPurchases + ". purchase " + purchases[indexOfPurchases].getName());
@@ -40,8 +41,7 @@ public class UniqueCustomer extends Customer {
 //                    System.out.println("match___");
                     //если это совпадение с первым фруктом заказа
                     if(indexOfPurchases == 1 && existedFruit[0].getName().equals(purchases[1].getName())){
-//                        System.out.println("Array in iskl " + Arrays.toString(existedFruit));
-//                        System.out.println("iskluchenie");
+//                        System.out.println("Array in  " + Arrays.toString(existedFruit));
                         isUnique = false;
                         //то пропускаем все операции,потому что первый фрукт мы выше уже сохранили как существующий
                         break;
@@ -50,11 +50,6 @@ public class UniqueCustomer extends Customer {
 //                    System.out.println(existedFruit.length);
 
 //                    System.out.println("Array before " + Arrays.toString(existedFruit));
-                    // еслине первый, то расширяем массив сущствующих фруктов
-                    existedFruit = fruitsCopyAndPlusElement(existedFruit);
-                    //и последний эл-ом в него кидаем найденный дуюлирующий фрукт
-                    existedFruit = addExistedFruitToUnlikeArray(existedFruit,
-                            purchases[indexOfPurchases], existedFruit.length - 1);
                     //и запоминаем это
                     isUnique = false;
 //                    System.out.println(existedFruit.length);
@@ -65,15 +60,24 @@ public class UniqueCustomer extends Customer {
             }
             //если же фрукт не встретился
             if (isUnique) {
-                //то сохраняем его в дубли для сравнения дальнейшего
-                existedFruit = fruitsCopyAndPlusElement(existedFruit);
-                existedFruit = addExistedFruitToUnlikeArray(existedFruit,
-                        purchases[indexOfPurchases], existedFruit.length - 1);
 
                 //и сохраняем его как уникальный фрукт
                 uniqueFruits = fruitsCopyAndPlusElement(uniqueFruits);
                 uniqueFruits = addExistedFruitToUnlikeArray(uniqueFruits,
                         purchases[indexOfPurchases], uniqueFruits.length - 1);
+
+                //то сохраняем его в дубли для сравнения дальнейшего
+                if(purchases[indexOfPurchases].getName().equals(existedFruit[0].getName()))
+                    continue;
+
+                existedFruit = fruitsCopyAndPlusElement(existedFruit);
+                existedFruit = addExistedFruitToUnlikeArray(existedFruit,
+                        purchases[indexOfPurchases], existedFruit.length - 1);
+
+                //и сохраняем его как уникальный фрукт
+//                uniqueFruits = fruitsCopyAndPlusElement(uniqueFruits);
+//                uniqueFruits = addExistedFruitToUnlikeArray(uniqueFruits,
+//                        purchases[indexOfPurchases], uniqueFruits.length - 1);
             }
         }
         //сохраняем полученные массивы в поля объекта
