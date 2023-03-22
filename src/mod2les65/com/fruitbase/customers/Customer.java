@@ -29,7 +29,7 @@ public abstract class Customer {
 
     //    имеет метод printPurchases,  метод выводит полученные фрукты
     public void printPurchases() {
-        System.out.print("фрукты " + name + ": ");
+        System.out.print("Фрукты, " + name + ": ");
 
         for (Fruit f : purchases) {
             if (f != null) {
@@ -52,7 +52,7 @@ public abstract class Customer {
      * метод выводит неподошедшие покупателю фрукты
      */
     public void printUnlikedFruits() {
-        System.out.print("Неподошедшие фрукты " + name + ": ");
+        System.out.print("Неподошедшие фрукты, " + name + ": ");
 
         for (Fruit f : unlikedFruits) {
             if (f != null)
@@ -80,11 +80,11 @@ public abstract class Customer {
      * @return скопированный массив с последним пустым эл-том
      */
     protected Fruit[] fruitsCopyAndPlusElement(Fruit[] arrayToCopy) {
-        Fruit[] arrayAfterCopying = new Fruit[unlikedFruits.length + 1];
+        Fruit[] arrayAfterCopying = new Fruit[arrayToCopy.length + 1];
         int counter = 0;
 
         //сделал проверку, чтобы к  0 эл-ту не обращаться
-        if (unlikedFruits.length > 0) {
+//        if (arrayToCopy.length > 0) {
             for (Fruit frt : arrayToCopy) {
                 //если это нулл эл-т то прерываем
                 //не совсем понял этот момент правильно ли вообще так проверять
@@ -94,12 +94,12 @@ public abstract class Customer {
                 arrayAfterCopying[counter] = frt;
                 counter++;
             }
-        }
+//        }
         return arrayAfterCopying;
     }
 
     /**
-     * Добаляет фрукт в массив несвежих
+     * Добаляет фрукт в массив несвежих.
      * @param fruitsArray массив в который доавбляем эл-т
      * @param fruit       доавбляемый фрукт
      * @param index       индекс в который ложим фрукт
