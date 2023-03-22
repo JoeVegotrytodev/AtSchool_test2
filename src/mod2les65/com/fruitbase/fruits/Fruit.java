@@ -40,6 +40,7 @@ public abstract class Fruit {
 
 //    - метод equals
 //    - метод hashcode
+//    делал когда еше не было видео лекции, посмотрю, исправлю
     @Override
     public int hashCode(){
         price = price.multiply(new BigDecimal(weight));
