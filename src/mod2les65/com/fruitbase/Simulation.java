@@ -4,6 +4,9 @@ import mod2les65.com.fruitbase.customers.Customer;
 import mod2les65.com.fruitbase.customers.FreshCustomer;
 import mod2les65.com.fruitbase.customers.UniqueCustomer;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Simulation {
 //    Также добавим специальный класс Simulation, внутри которого
 //    теперь будет выполняться программа.
@@ -23,16 +26,10 @@ public class Simulation {
         //- далее для каждого покупателя:
         //    выполняется заказ и формируется груз
         Customer[] customers = new Customer[2];
-        Cargo c = null;
+        Cargo c = base.takeOrder(args);
 
-//        for(int i = 0; i < args.length; i++){
-//            System.out.println("console " + args[i]);
-//            c = base.takeOrder(args[i]);
-//        }
-        c = base.takeOrder(args);
-
-        customers[0] = new FreshCustomer(c.getFruits(),"Petr");
-        customers[1] = new UniqueCustomer(c.getFruits(),"Pavel");
+        customers[0] = new FreshCustomer(c.getFruits(),"Свежий клиент");
+        customers[1] = new UniqueCustomer(c.getFruits(),"Уникальный клиент");
 
         //- далее для каждого покупателя:
         for(Customer customer : customers){
@@ -46,15 +43,5 @@ public class Simulation {
             customer.printUnlikedFruits();
             System.out.print("\n");
         }
-
-
-//        for(int i = 0; i < args.length; i++){
-//            base.takeOrder(args[i]);
-//            if(i == args.length - 1)
-//                System.out.println(base.takeOrder(args[i]) + "\n");
-//        }
-
     }
-
-
 }

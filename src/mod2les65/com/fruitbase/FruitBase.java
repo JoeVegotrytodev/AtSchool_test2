@@ -41,24 +41,13 @@ public class FruitBase {
     //перегрузка метода тейк оредер, для приема массива
     public Cargo takeOrder(String[] orderedFruit) {
 
-        //boolean isNull = false;
-
         for (String fruitName : orderedFruit) {
             if (catalogue.findFruit(fruitName) != null) {
                 //формируется груз Cargo с информацией о найденных фруктах
-                System.out.println("add me : " + fruitName);
                 cargo.addFruit(catalogue.findFruit(fruitName));
-                System.out.println("cargo after adding fruit : "
-                        + cargo.getFruits());
             }
         }
-        // Если среди запроса не встретились известные названия,
-        // то возвращается груз Cargo с нулевым количеством фруктов
-//        if(isNull) {
-//            return new Cargo();
-//            //return c1;
-//        }
-//        else
+
         return cargo;
     }
 

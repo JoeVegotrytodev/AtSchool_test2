@@ -1,9 +1,6 @@
 package mod2les65.com.fruitbase.customers;
 
-import mod2les65.com.fruitbase.Cargo;
 import mod2les65.com.fruitbase.fruits.Fruit;
-
-import java.util.Arrays;
 
 //Надо создать новый пакет customers и в нем создать новые классы
 public abstract class Customer {
@@ -11,18 +8,16 @@ public abstract class Customer {
     protected Fruit[] purchases;
     //    имеет внутреннее поле name - имя покупателя
     protected String name;
-    //
+    //    массив неподошедших фруктов
     protected Fruit[] unlikedFruits;
 
     //    имеет конструктор
     public Customer(Fruit[] purchases, String name) {
 //      инициализируется внутренний массив
-        System.out.println("inside cust const = " +
-                Arrays.toString(purchases) + '\n');
         this.purchases = purchases;
 //      устанавливается имя
         this.name = name;
-
+        //иниициализируем массив
         unlikedFruits = new Fruit[0];
     }
 
@@ -31,11 +26,11 @@ public abstract class Customer {
 //    т.е. в грузе объекты заканчиваются.
     public abstract void takeFruits();
 
+
     //    имеет метод printPurchases,  метод выводит полученные фрукты
     public void printPurchases() {
-        System.out.println("inside print purchases = " +
-                Arrays.toString(purchases) + '\n');
-        System.out.print("Фрукты " + name + " : ");
+        System.out.print("фрукты " + name + ": ");
+
         for (Fruit f : purchases) {
             if (f != null) {
                 System.out.print(f.getName() + " ");
@@ -44,19 +39,74 @@ public abstract class Customer {
         System.out.print('\n');
     }
 
+    /**
+     * getter for purchases
+     *
+     * @return array of fruits
+     */
     public Fruit[] getPurchases() {
         return purchases;
     }
 
+    /**
+     * метод выводит неподошедшие покупателю фрукты
+     */
     public void printUnlikedFruits() {
-        System.out.print("Неподошедшие фрукты : ");
-
+        System.out.print("Неподошедшие фрукты " + name + ": ");
 
         for (Fruit f : unlikedFruits) {
-            if(f != null)
+            if (f != null)
                 System.out.print(f.getName() + " ");
         }
         System.out.print('\n');
+    }
 
+    /**
+     * Добаляет фрукт в массив заказа
+     * @param fruitsArray массив в который доавбляем эл-т
+     * @param fruit       доавбляемый фрукт
+     * @param index       индекс в который ложим фрукт
+     * @return массив с доавбленным эл-том
+     */
+    protected Fruit[] addFreshFruitToPurchase(Fruit[] fruitsArray, Fruit fruit, int index) {
+        //моно и напрямую в массив заказы добалдвять но и без того много исправить нужно......
+        fruitsArray[index] = fruit;
+        return fruitsArray;
+    }
+
+    /**
+     * Копирует массив и добавялет + 1 пустой эл-т
+     * @param arrayToCopy массив который необхоидмо скопировать
+     * @return скопированный массив с последним пустым эл-том
+     */
+    protected Fruit[] fruitsCopyAndPlusElement(Fruit[] arrayToCopy) {
+        Fruit[] arrayAfterCopying = new Fruit[unlikedFruits.length + 1];
+        int counter = 0;
+
+        //сделал проверку, чтобы к  0 эл-ту не обращаться
+        if (unlikedFruits.length > 0) {
+            for (Fruit frt : arrayToCopy) {
+                //если это нулл эл-т то прерываем
+                //не совсем понял этот момент правильно ли вообще так проверять
+                if (frt == null) {
+                    break;
+                }
+                arrayAfterCopying[counter] = frt;
+                counter++;
+            }
+        }
+        return arrayAfterCopying;
+    }
+
+    /**
+     * Добаляет фрукт в массив несвежих
+     * @param fruitsArray массив в который доавбляем эл-т
+     * @param fruit       доавбляемый фрукт
+     * @param index       индекс в который ложим фрукт
+     * @return массив с доавбленным эл-том
+     */
+    protected Fruit[] addUnfreshFruitToUnlikeArray(Fruit[] fruitsArray, Fruit fruit, int index) {
+        fruitsArray[index] = fruit;
+        return fruitsArray;
     }
 }

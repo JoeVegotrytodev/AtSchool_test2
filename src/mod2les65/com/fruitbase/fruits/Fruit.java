@@ -56,6 +56,6 @@ public abstract class Fruit {
 
     @Override
     public boolean equals(Object obj) {
-        return (this == obj);
+        return (this.hashCode() == obj.hashCode());
     }
 }

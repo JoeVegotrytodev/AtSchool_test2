@@ -31,20 +31,8 @@ public class Cargo {
         return priceSum;
     }
 
-    //метод из старого задания. Не использваолся в программе. Заменил
-//    public void getFruits(){
-//        for(Fruit fruit : orderedFruit){
-//            System.out.println(fruit.getName());
-//        }
-//    }
-//    В класс Cargo надо добавить
-//    - общедоступный метод getFruits
-//    с его помощью покупатели получают фрукты из груза
-//    возвращает список фруктов
     //уже спел реализовать этот метод самостоятельно)
     public Fruit[] getFruits() {
-        System.out.println("inside cargo = " +
-                Arrays.toString(orderedFruit) + '\n');
         return orderedFruit;
     }
 
@@ -54,19 +42,16 @@ public class Cargo {
      */
     void addFruit(Fruit fruit) {
         //создаем больший массив
-        System.out.println(orderedFruit.length);
-        //еще тут было, поправил
-        //Fruit[] plusFruit = new Fruit[10];
         Fruit[] plusFruit = new Fruit[orderedFruit.length + 1];
+
+        int index = 0;
         for(Fruit f : orderedFruit){
-            for(int i = 0 ; i < plusFruit.length - 1; i++){
-                plusFruit[i] = f;
-            }
+                plusFruit[index] = f;
+                index++;
         }
         //добавляем в него  фрукт
         plusFruit[putLoc] = fruit;
         putLoc++;
-        //System.out.println(orderedFruit.length - 1);
         //перезаписываем массив класса Cargo
         orderedFruit = plusFruit.clone();
 
