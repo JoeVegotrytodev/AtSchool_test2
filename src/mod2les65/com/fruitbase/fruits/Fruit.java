@@ -1,6 +1,7 @@
 package mod2les65.com.fruitbase.fruits;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.Random;
 
 public abstract class Fruit {
@@ -57,6 +58,16 @@ public abstract class Fruit {
 
     @Override
     public boolean equals(Object obj) {
-        return (this.hashCode() == obj.hashCode());
+        if(this == obj)
+            return true;
+        else if(obj == null || getClass() != obj.getClass())
+            return false;
+
+        Fruit objToCompare = (Fruit) obj;
+
+        return this.weight == objToCompare.weight &&
+                Objects.equals(price, objToCompare.price) &&
+                Objects.equals(name, objToCompare.name) &&
+                Objects.equals(freshness, objToCompare.freshness);
     }
 }
