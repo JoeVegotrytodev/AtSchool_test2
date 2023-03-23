@@ -1,5 +1,7 @@
 package mod2les75.task1;
 
+import java.util.Arrays;
+
 //Напишите программу, которая через аргументы командной строки
 //получает "слова" (каждый аргумент - отдельное слово)
 public class EntryPoint75_1 {
