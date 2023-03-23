@@ -21,7 +21,7 @@ public abstract class Customer {
         unlikedFruits = new Fruit[0];
     }
 
-//    имеет метод takeFruits, который должны реализовать наследникик
+    //    имеет метод takeFruits, который должны реализовать наследникик
 //    метод принимает груз и сохраняет из него фрукты во внутренний массив,
 //    т.е. в грузе объекты заканчиваются.
     public abstract void takeFruits();
@@ -63,6 +63,7 @@ public abstract class Customer {
 
     /**
      * Копирует массив и добавялет + 1 пустой эл-т
+     *
      * @param arrayToCopy массив который необхоидмо скопировать
      * @return скопированный массив с последним пустым эл-том
      */
@@ -70,8 +71,6 @@ public abstract class Customer {
         Fruit[] arrayAfterCopying = new Fruit[arrayToCopy.length + 1];
         int counter = 0;
 
-        //сделал проверку, чтобы к  0 эл-ту не обращаться
-//        if (arrayToCopy.length > 0) {
         for (Fruit frt : arrayToCopy) {
             //если это нулл эл-т то прерываем
             //не совсем понял этот момент правильно ли вообще так проверять
@@ -81,7 +80,6 @@ public abstract class Customer {
             arrayAfterCopying[counter] = frt;
             counter++;
         }
-//        }
         return arrayAfterCopying;
     }
 }

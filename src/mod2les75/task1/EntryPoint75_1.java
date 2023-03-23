@@ -14,47 +14,63 @@ public class EntryPoint75_1 {
             return;
         }
 
-
-//        печатает полученную последовательность слов,
+//      печатает полученную последовательность слов,
         System.out.println("Original string : ");
-        for (String str : args)
-            System.out.print(str + ' ');
-
-
+        printStrings(args);
         System.out.println("\n\nString after deleting matches : ");
+
         //массив хранения неповторяющихся эл-ов
         String[] uniqueStr = new String[args.length];
 
-        //проходим по элеметам ком строки
-        for (int i = 0, index = 0; i < args.length; i++) {
-            //устанавливаем 0 эл-т, чтобы в цикле ниже не было npe
-            if (index == 0) {
-                uniqueStr[index] = args[i];
-                index++;
-                continue;
-            }
+        //сохраняю 0 элемент в массив уникальных элементов, потому что он уникален и
+        // чтобы потом его использовать в сравнении,
+        //если не укажу, то массив будет хранить null эелмент и при сравнении будет ошибка NPE
+        uniqueStr[0] = args[0];
 
-            //флаг для пониамя необходимо ли соранять значение
-            boolean isUnique = true;
-            for (int j = 0; j < uniqueStr.length; j++) {
-                //если строки равны - прерываем цикл
-                if (args[i].equals(uniqueStr[j])) {
-                    isUnique = false;
-                    break;
-                }
-            }
-            //если строка уникальна - сохраняем в выходной массив
-            if(isUnique) {
-                uniqueStr[index] = args[i];
-                index++;
-            }
-        }
+        //отбираем лишь уникальные элементы
+        uniqueElementsFilter(args, uniqueStr);
+    }
 
-        //выводит только уникальные слова из переданной последовательности.
-        for(String str : uniqueStr){
+    /**
+     * Выводит переданный массив
+     *
+     * @param stringToPrint массив который нужно вывести в консоль
+     */
+    private static void printStrings(String[] stringToPrint) {
+        for (String str : stringToPrint) {
             if (str != null) {
                 System.out.print(str + " ");
             }
         }
+    }
+
+    /**
+     * Отбирает уникальные методы
+     *
+     * @param stringArray   массив строк в котором ищем дубли
+     * @param uniqueStrings массив уникальных строк
+     */
+    private static void uniqueElementsFilter(String[] stringArray, String[] uniqueStrings) {
+        //проходим по элеметам исходой строки
+        for (int i = 1, index = 0; i < stringArray.length; i++) {
+            //флаг является ли элемент уникальным
+            boolean isUnique = true;
+            for (int j = 0; j < uniqueStrings.length; j++) {
+                //если строки равны
+                if (stringArray[i].equals(uniqueStrings[j])) {
+                    //то считаем строку не уникальной
+                    isUnique = false;
+                    //раз строка уже совпала с другой, то смысла далее по циклу ее нет
+                    break;
+                }
+            }
+            //если же строка уникальна - сохраняем в массив уникальных элементов
+            if (isUnique) {
+                uniqueStrings[index] = stringArray[i];
+                index++;
+            }
+        }
+        //выводим только уникальные слова из переданной последовательности.
+        printStrings(uniqueStrings);
     }
 }

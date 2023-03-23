@@ -13,88 +13,102 @@ public class UniqueCustomer extends Customer {
 //    реалиация метода takeFruits отбирает только уникальные фрукты,
 //    т.е. те, которых еще нет во внутреннем массиве
     public void takeFruits() {
-        //массив для хранения фруктов-дублей
+        //массив для хранения фруктов-дублей. Не заметил в условии, что нужно удалять из карго фрукты
+        // и вместо вызова метода ремув просто сохранял сюда...
+        //лишние действия создал...
+        //ниже пройду по этому массиву и удаля из карго ! А метод создать в КАСТУМЕР
         Fruit[] existedFruit = new Fruit[1];
         //массив хранения уникальных фруктов
+        //так как покупки содержит массив всех фруктов, на ходу перезаписывать его не хотел
+        //во время цикла, поэтому сохранял в отдельный массив
         Fruit[] uniqueFruits = new Fruit[0];
 
         //проходим по массиву заказа
         for (int indexOfPurchases = 0; indexOfPurchases < purchases.length; indexOfPurchases++) {
-            //обнуляем наличие дублей
+            //обнуляем флаг показывающий наличие дублей
             boolean isUnique = true;
-            //проходим по уже имеющимся у покупателя фруктам
+            //проходим по имеющимся у покупателя фруктам
             for (int indexOfExist = 0; indexOfExist < existedFruit.length; indexOfExist++) {
-                boolean isNew = true;
 
-                //первый фрукт заказа сохраняем сразу в существующие фрукты для обращения в цикле
-                if(indexOfPurchases == 0){
+                //первый фрукт заказа сохраняем сразу в существующие фрукты покупателя
+                // для обращения в цикле к эл-ту массива, чтобы сравнивать мог с фруктом, а не с null
+                if (indexOfPurchases == 0) {
+                    //и этот код бы вынес в отдельный метод, но массив объявлен только в методе
+                    // в отличие от массива ниже область видимо у него ограничена
                     existedFruit[0] = purchases[0];
-//                    System.out.println("Array in  " + Arrays.toString(existedFruit));
+                    //вынес в другой метод сохранение в массив неподходящий фруктов.
+                    elementSaveToUnlikedArray(purchases[0]);
+                    //и прерваем цикл, ибо не с чем сравнивать первый элемент
                     break;
                 }
-//                System.out.println("indexOfPurchases " + indexOfPurchases + ". purchase " + purchases[indexOfPurchases].getName());
-//                System.out.println("indexOfExist " + indexOfExist + ". exist " + existedFruit[indexOfExist].getName());
 
-                //если фрукт заказа совпал с имеющиммся фруктом
+                //если фрукт из заказа совпал с имеющиммся фруктом - то есть фрукт дубль нашли
                 if (purchases[indexOfPurchases].getName().equals(existedFruit[indexOfExist].getName())) {
 
-//                    System.out.println("match___");
                     //если это совпадение с первым фруктом заказа
-                    if(indexOfPurchases == 1 && existedFruit[0].getName().equals(purchases[1].getName())){
-//                        System.out.println("Array in  " + Arrays.toString(existedFruit));
+                    //опять бы вынес в отдельный метод - но тут меняются поля метода
+                    //которые из другого метода не бдуь доступны
+                    if (indexOfPurchases == 1 && existedFruit[0].getName().equals(purchases[1].getName())) {
+                        //отмечаем, что фрукт не уникален
                         isUnique = false;
-                        //то пропускаем все операции,потому что первый фрукт мы выше уже сохранили как существующий
+                        //то прерываеми, потому что первый фрукт мы выше уже сохранили в массив неподходящих фруктов
+                        //а если сохранять тут то появлялись лишние записи и проблемы с NPE
                         break;
                     }
 
-//                    System.out.println(existedFruit.length);
-
-//                    System.out.println("Array before " + Arrays.toString(existedFruit));
-                    //и запоминаем это
+                    //если же элемент является дубем и при этом не совпал с первым фруктом
+                    //то сохраняем его в неподхяодище фрукты
+                    elementSaveToUnlikedArray(purchases[indexOfPurchases]);
+                    //отмечаем не уникальным
                     isUnique = false;
-//                    System.out.println(existedFruit.length);
-//                    System.out.println("Array after " + Arrays.toString(existedFruit));
-                    //после чего нет смысла искать дубли по оставшемуся списку имеющихся фруктов
+                    //раз уже понятно, что это дубль, то и смысла дальше сравнивать этот фрукт нет
                     break;
                 }
             }
-            //если же фрукт не встретился
+            //если же фрукт уникален и не было ни одного совпадения
             if (isUnique) {
-
-                //и сохраняем его как уникальный фрукт
+                //сохраняем его в массив уникальных фруктов
                 uniqueFruits = fruitsCopyAndPlusElement(uniqueFruits);
-                uniqueFruits = addExistedFruitToUnlikeArray(uniqueFruits,
+                uniqueFruits = addFruitToArray(uniqueFruits,
                         purchases[indexOfPurchases], uniqueFruits.length - 1);
 
-                //то сохраняем его в дубли для сравнения дальнейшего
-                if(purchases[indexOfPurchases].getName().equals(existedFruit[0].getName()))
+                //если это не первый фрукт, то
+                if (purchases[indexOfPurchases].getName().equals(existedFruit[0].getName()))
                     continue;
 
+                //сохраняем фрукт в массив дублей, чтобы можно было с ним сравнивать последующие фрукты
+                //(так как первый фрукт присутсвует в это массиве уже)
                 existedFruit = fruitsCopyAndPlusElement(existedFruit);
-                existedFruit = addExistedFruitToUnlikeArray(existedFruit,
+                existedFruit = addFruitToArray(existedFruit,
                         purchases[indexOfPurchases], existedFruit.length - 1);
-
-                //и сохраняем его как уникальный фрукт
-//                uniqueFruits = fruitsCopyAndPlusElement(uniqueFruits);
-//                uniqueFruits = addExistedFruitToUnlikeArray(uniqueFruits,
-//                        purchases[indexOfPurchases], uniqueFruits.length - 1);
             }
         }
-        //сохраняем полученные массивы в поля объекта
-        unlikedFruits = existedFruit;
+        //сохраняем полученный массив уникальных фруктов в поле заказ покупателя
         purchases = uniqueFruits;
     }
 
     /**
-     * Добаляет фрукт в массив несвежих.
+     * Добаляет фрукт в массив фруктов.
      * @param fruitsArray массив в который доавбляем эл-т
      * @param fruit       доавбляемый фрукт
      * @param index       индекс в который ложим фрукт
      * @return массив с доавбленным эл-том
      */
-    private Fruit[] addExistedFruitToUnlikeArray(Fruit[] fruitsArray, Fruit fruit, int index) {
+    private Fruit[] addFruitToArray(Fruit[] fruitsArray, Fruit fruit, int index) {
         fruitsArray[index] = fruit;
         return fruitsArray;
     }
+
+    /**
+     * Сохраняет полученный фрукт в массив фруктов, которые не подошли киенту
+     * @param firstFruit фрукт который сохраняем
+     */
+    private void elementSaveToUnlikedArray(Fruit firstFruit){
+        unlikedFruits = fruitsCopyAndPlusElement(unlikedFruits);
+        unlikedFruits = addFruitToArray(unlikedFruits,
+                firstFruit, unlikedFruits.length - 1);
+    }
+
+
 
 }
