@@ -38,7 +38,7 @@ public class EntryPoint75_1 {
      *
      * @param stringToPrint массив который нужно вывести в консоль
      */
-    private static void printStrings(String[] stringToPrint) {
+    public static void printStrings(String[] stringToPrint) {
         for (String str : stringToPrint) {
             if (str != null) {
                 System.out.print(str + " ");
