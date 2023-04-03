@@ -5,7 +5,7 @@ import java.util.Random;
 public class EntryPoint75_3 {
     public static void main(String[] args) {
         int l = 512;
-        int n = 10 ;
+        int n = 10000000;
         int m = 5;
 //        Напишите программу, в которой выполняются l итераций следующих действий:
 //        1) Выводится номер итерации
