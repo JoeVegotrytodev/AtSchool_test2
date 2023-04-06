@@ -54,7 +54,7 @@ public class EntryPoint75_1 {
      */
     private static void uniqueElementsFilter(String[] stringArray, String[] uniqueStrings) {
         //проходим по элеметам исходой строки
-        for (int i = 1, index = 0; i < stringArray.length; i++) {
+        for (int i = 1, index = 1; i < stringArray.length; i++) {
             //флаг является ли элемент уникальным
             boolean isUnique = true;
             for (int j = 0; j < uniqueStrings.length; j++) {
