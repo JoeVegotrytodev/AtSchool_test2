@@ -106,7 +106,6 @@ public class FruitBase{
             System.out.println("Ошибка ввода-вывода");
         }
 
-
         System.out.println("Каталог экспортирован");
     }
 //    - общедоступный метод importCatalogue

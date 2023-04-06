@@ -38,6 +38,7 @@ public class Simulation {
         } else if (fruitBase.getFlag().equals("-i") | fruitBase.getFlag().equals("--import")) {
             fruitBase.importCatalogue();
             fruitBase.print();
+            System.out.println();
         }
 
         //- далее для каждого покупателя:

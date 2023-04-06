@@ -17,7 +17,7 @@ public class Alchemist {
         }
 
 
-        for(int index = 0; index <= elementsArray.length / 2; index+=2){
+        for(int index = 0; (index < elementsArray.length) & (index + 1 <= elementsArray.length - 1); index+=2){
             elementsArray[index].connect(elementsArray[index+1]);
         }
     }

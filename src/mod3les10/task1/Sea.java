@@ -11,7 +11,7 @@ public class Sea extends NatureElement {
 
     @Override
     public String toString() {
-        return "Dust";
+        return "Sea";
     }
 
 }
