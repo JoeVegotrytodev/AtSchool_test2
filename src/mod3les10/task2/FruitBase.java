@@ -55,7 +55,7 @@ public class FruitBase{
 
     public Cargo takeOrder(String[] orderedFruit) {
 
-        for (int index = 0; index < orderedFruit.length - 1; index++) {
+        for (int index = 0; index < orderedFruit.length; index++) {
             if (catalogue.findFruit(orderedFruit[index]) != null) {
                 //формируется груз Cargo с информацией о найденных фруктах
                 cargo.addFruit(catalogue.findFruit(orderedFruit[index]));

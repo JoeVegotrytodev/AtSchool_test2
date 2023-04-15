@@ -1,10 +1,7 @@
 //находится в пакете com.fruitbase
-package mod4les4.task2;
-
-import mod4les4.task2.fruits.Fruit;
+package mod5les5.task2;
 
 import java.io.*;
-import java.util.Arrays;
 
 public class FruitBase{
     //содержит поле FruitCatalogue
