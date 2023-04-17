@@ -94,7 +94,7 @@ public class FruitBase{
     public void exportCatalogue() {
 
         try (FileOutputStream fileOutputStream = new FileOutputStream
-                ("src/mod3les10/task2/resources/save.ser")) {
+                ("src/mod5les5/task2/resources/save.ser")) {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(catalogue);
 //            objectOutputStream.close();
@@ -105,12 +105,25 @@ public class FruitBase{
 
         System.out.println("Каталог экспортирован");
     }
+
+    public void exportCatalogue(String path){
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(catalogue);
+            objectOutputStream.close();
+            System.out.println("Каталог экспортирован");
+        } catch (IOException exc) {
+            System.out.println("Ошибка ввода-вывода");
+            exc.printStackTrace();
+        }
+    }
 //    - общедоступный метод importCatalogue
 //    Десериализует из проекта объект FruitCatalogue и результатом заменяет текущий внутренний объект.
 //    Выводится сообщение "каталог импортирован"
     public void importCatalogue() {
         try (FileInputStream fileInputStream = new FileInputStream
-                ("src/mod3les10/task2/resources/save.ser")) {
+                ("src/mod5les5/task2/resources/save.ser")) {
 
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             catalogue = (FruitCatalogue) objectInputStream.readObject();
@@ -119,6 +132,19 @@ public class FruitBase{
             System.out.println("Ошибка ввода-вывода в импорте");
         }
 
+        System.out.println("Каталог импортирован");
+    }
+
+    public void importCatalogue(String path){
+        try (FileInputStream fileInputStream = new FileInputStream
+                (path)) {
+
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            catalogue = (FruitCatalogue) objectInputStream.readObject();
+        } catch (IOException | ClassNotFoundException exc) {
+            System.out.println("Ошибка ввода-вывода в импорте");
+            exc.printStackTrace();
+        }
     }
 
     public String getFlag(){

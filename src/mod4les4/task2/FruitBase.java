@@ -97,7 +97,7 @@ public class FruitBase{
     public void exportCatalogue() {
 
         try (FileOutputStream fileOutputStream = new FileOutputStream
-                ("src/mod3les10/task2/resources/save.ser")) {
+                ("src/mod4les4/task2/resources/save.ser")) {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(catalogue);
 //            objectOutputStream.close();
@@ -113,7 +113,7 @@ public class FruitBase{
 //    Выводится сообщение "каталог импортирован"
     public void importCatalogue() {
         try (FileInputStream fileInputStream = new FileInputStream
-                ("src/mod3les10/task2/resources/save.ser")) {
+                ("src/mod4les4/task2/resources/save.ser")) {
 
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             catalogue = (FruitCatalogue) objectInputStream.readObject();

@@ -3,6 +3,7 @@ package mod3les10.task2.customers;
 import mod3les10.task2.fruits.Fruit;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class UniqueCustomer extends Customer  {
 
@@ -85,6 +86,7 @@ public class UniqueCustomer extends Customer  {
         }
         //сохраняем полученный массив уникальных фруктов в поле заказ покупателя
         purchases = uniqueFruits;
+        unlikedFruits = Arrays.copyOfRange(unlikedFruits, 1, unlikedFruits.length);
     }
 
     /**

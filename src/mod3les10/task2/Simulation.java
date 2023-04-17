@@ -40,30 +40,31 @@ public class Simulation {
             fruitBase.print();
             System.out.println();
         }
+        else {
 
-        //- далее для каждого покупателя:
-        //    выполняется заказ и формируется груз
-        Cargo freshCustomerOrder = new Cargo(cargo);
-        Cargo uniqueCustomerOrder = new Cargo(cargo);
+            //- далее для каждого покупателя:
+            //    выполняется заказ и формируется груз
+            Cargo freshCustomerOrder = new Cargo(cargo);
+            Cargo uniqueCustomerOrder = new Cargo(cargo);
 
-        customers[0] = new FreshCustomer(freshCustomerOrder.getFruits(), "Свежий клиент");
-        customers[1] = new UniqueCustomer(uniqueCustomerOrder.getFruits(), "Уникальный клиент");
+            customers[0] = new FreshCustomer(freshCustomerOrder.getFruits(), "Свежий клиент");
+            customers[1] = new UniqueCustomer(uniqueCustomerOrder.getFruits(), "Уникальный клиент");
 
-        //- далее для каждого покупателя:
-        for (Customer customer : customers) {
-            //    выводится информации о грузе
-            customer.printPurchases();
-            //    покупатель выбирает из груза интересующие его фрукты
-            customer.takeFruits();
-            //    покупатель выводит полученные фрукты
-            customer.printPurchases();
-            //    выводится информации об оставшемся грузе
-            //совершенно забыл про метод ремув класса Карго и создал отедльный массив фруктов покупателю
-            // и метод для его вывода вместо того чтобы работать с заказом класса Карго
-            customer.printUnlikedFruits();
-            //сделаю костыль
-            System.out.print("\n");
+            //- далее для каждого покупателя:
+            for (Customer customer : customers) {
+                //    выводится информации о грузе
+                customer.printPurchases();
+                //    покупатель выбирает из груза интересующие его фрукты
+                customer.takeFruits();
+                //    покупатель выводит полученные фрукты
+                customer.printPurchases();
+                //    выводится информации об оставшемся грузе
+                //совершенно забыл про метод ремув класса Карго и создал отедльный массив фруктов покупателю
+                // и метод для его вывода вместо того чтобы работать с заказом класса Карго
+                customer.printUnlikedFruits();
+                //сделаю костыль
+                System.out.print("\n");
+            }
         }
-
     }
 }

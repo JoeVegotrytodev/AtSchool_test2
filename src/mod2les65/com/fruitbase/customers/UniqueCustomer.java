@@ -2,6 +2,8 @@ package mod2les65.com.fruitbase.customers;
 
 import mod2les65.com.fruitbase.fruits.Fruit;
 
+import java.util.Arrays;
+
 public class UniqueCustomer extends Customer {
 
     public UniqueCustomer(Fruit[] fruits, String name) {
@@ -83,6 +85,7 @@ public class UniqueCustomer extends Customer {
         }
         //сохраняем полученный массив уникальных фруктов в поле заказ покупателя
         purchases = uniqueFruits;
+        unlikedFruits = Arrays.copyOfRange(unlikedFruits, 1, unlikedFruits.length);
     }
 
     /**
