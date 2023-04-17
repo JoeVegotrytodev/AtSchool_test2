@@ -117,6 +117,7 @@ public class FruitBase{
 
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             catalogue = (FruitCatalogue) objectInputStream.readObject();
+            System.out.println("Каталог импортирован");
         } catch (IOException | ClassNotFoundException exc) {
             exc.printStackTrace();
             System.out.println("Ошибка ввода-вывода в импорте");
@@ -124,8 +125,13 @@ public class FruitBase{
 
     }
 
-    public String getFlag(){
-        return flag;
+    public String getFlag(String[] orderedFruit){
+        for(String str : orderedFruit){
+            if(str.startsWith("-")){
+                return str;
+            }
+        }
+        return "null";
     }
 
     public void print(){

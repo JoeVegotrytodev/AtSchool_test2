@@ -29,26 +29,23 @@ public class Simulation {
         FruitBase fruitBase = new FruitBase();
         Delivery delivery = fruitBase.takeOrder(args);
 
-        if (fruitBase.getFlag().equals("-e") | fruitBase.getFlag().equals("--export")) {
+        if (fruitBase.getFlag(args).equals("-e") | fruitBase.getFlag(args).equals("--export")) {
             fruitBase.exportCatalogue();
             fruitBase.print();
-            return;
-        } else if (fruitBase.getFlag().equals("-i") | fruitBase.getFlag().equals("--import")) {
+        } else if (fruitBase.getFlag(args).equals("-i") | fruitBase.getFlag(args).equals("--import")) {
             fruitBase.importCatalogue();
             fruitBase.print();
             System.out.println();
-        } else if(fruitBase.getFlag().startsWith("-e=")){
-            String path = fruitBase.getFlag().substring(3);
+        } else if(fruitBase.getFlag(args).startsWith("-e=")){
+            String path = fruitBase.getFlag(args).substring(3);
 //            System.out.println("e path = " + path);
             fruitBase.exportCatalogue(path);
             fruitBase.print();
-//            return;
-        } else if(fruitBase.getFlag().startsWith("-i=")){
-            String path = fruitBase.getFlag().substring(3);
+        } else if(fruitBase.getFlag(args).startsWith("-i=")){
+            String path = fruitBase.getFlag(args).substring(3);
 //            System.out.println("i path = " + path);
             fruitBase.importCatalogue(path);
             fruitBase.print();
-//            return;
         }
         else {
             //- далее для каждого покупателя:

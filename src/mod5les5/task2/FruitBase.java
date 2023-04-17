@@ -147,8 +147,13 @@ public class FruitBase{
         }
     }
 
-    public String getFlag(){
-        return flag;
+    public String getFlag(String[] orderedFruit){
+        for(String str : orderedFruit){
+            if(str.startsWith("-")){
+                return str;
+            }
+        }
+        return null;
     }
 
     public void print(){

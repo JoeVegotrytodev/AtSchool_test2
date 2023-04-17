@@ -31,11 +31,10 @@ public class Simulation {
         FruitBase fruitBase = new FruitBase();
         Delivery delivery = fruitBase.takeOrder(args);
 
-        if (fruitBase.getFlag().equals("-e") | fruitBase.getFlag().equals("--export")) {
+        if (fruitBase.getFlag(args).equals("-e") | fruitBase.getFlag(args).equals("--export")) {
             fruitBase.exportCatalogue();
             fruitBase.print();
-            return;
-        } else if (fruitBase.getFlag().equals("-i") | fruitBase.getFlag().equals("--import")) {
+        } else if (fruitBase.getFlag(args).equals("-i") | fruitBase.getFlag(args).equals("--import")) {
             fruitBase.importCatalogue();
             fruitBase.print();
             System.out.println();
