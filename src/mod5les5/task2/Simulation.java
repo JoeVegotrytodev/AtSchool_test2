@@ -4,6 +4,9 @@ import mod4les4.task2.customers.Customer;
 import mod4les4.task2.customers.FreshCustomer;
 import mod4les4.task2.customers.UniqueCustomer;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class Simulation {
 //    Также добавим специальный класс Simulation, внутри которого
 //    теперь будет выполняться программа.
@@ -36,18 +39,33 @@ public class Simulation {
             fruitBase.importCatalogue();
             fruitBase.print();
             System.out.println();
-        } else if(fruitBase.getFlag(args).startsWith("-e=")){
-            String path = fruitBase.getFlag(args).substring(3);
-//            System.out.println("e path = " + path);
-            fruitBase.exportCatalogue(path);
-            fruitBase.print();
-        } else if(fruitBase.getFlag(args).startsWith("-i=")){
-            String path = fruitBase.getFlag(args).substring(3);
-//            System.out.println("i path = " + path);
-            fruitBase.importCatalogue(path);
-            fruitBase.print();
-        }
-        else {
+        } else if (fruitBase.getFlag(args).startsWith("-e=")) {
+            try {
+                String path = fruitBase.getFlag(args).substring(3);
+                fruitBase.exportCatalogue(path);
+                fruitBase.print();
+            } catch (FileNotFoundException fnfExc) {
+                System.out.println("Не найден файл ");
+            } catch (IOException ioExc) {
+                System.out.println("Ошибка при экспорте каталога в ");
+            } catch (Exception exc) {
+                System.out.println("Непредведенная ошибка при экспорте каталога из файла ");
+            }
+        } else if (fruitBase.getFlag(args).startsWith("-i=")) {
+            try {
+                String path = fruitBase.getFlag(args).substring(3);
+                fruitBase.importCatalogue(path);
+                fruitBase.print();
+            } catch (FileNotFoundException fnfExc) {
+                System.out.println("Не найден файл ");
+            } catch (IOException ioExc) {
+                System.out.println("Ошибка при импорте каталога в ");
+            } catch (ClassNotFoundException classExc) {
+                System.out.println("Невозможно импортировать каталог из файла : неподдерживаемая версия");
+            } catch (Exception exc) {
+                System.out.println("Непредведенная ошибка при экспорте каталога из файла ");
+            }
+        } else {
             //- далее для каждого покупателя:
             //    выполняется заказ и формируется груз
             Cargo freshCustomerOrder = new Cargo(delivery);

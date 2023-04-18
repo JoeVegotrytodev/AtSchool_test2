@@ -2,6 +2,7 @@
 package mod5les5.task2;
 
 import java.io.*;
+import java.lang.ClassNotFoundException;
 
 public class FruitBase{
     //содержит поле FruitCatalogue
@@ -106,45 +107,47 @@ public class FruitBase{
         System.out.println("Каталог экспортирован");
     }
 
-    public void exportCatalogue(String path){
-        try {
+    public void exportCatalogue(String path) throws IOException{
+//        try {
             FileOutputStream fileOutputStream = new FileOutputStream(path);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(catalogue);
             objectOutputStream.close();
             System.out.println("Каталог экспортирован");
-        } catch (IOException exc) {
-            System.out.println("Ошибка ввода-вывода");
-            exc.printStackTrace();
-        }
+//        } catch (IOException exc) {
+//            System.out.println("Ошибка ввода-вывода");
+//            exc.printStackTrace();
+//        }
     }
 //    - общедоступный метод importCatalogue
 //    Десериализует из проекта объект FruitCatalogue и результатом заменяет текущий внутренний объект.
 //    Выводится сообщение "каталог импортирован"
-    public void importCatalogue() {
+    public void importCatalogue(){
         try (FileInputStream fileInputStream = new FileInputStream
                 ("src/mod5les5/task2/resources/save.ser")) {
 
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             catalogue = (FruitCatalogue) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException exc) {
-            exc.printStackTrace();
             System.out.println("Ошибка ввода-вывода в импорте");
+            exc.printStackTrace();
         }
 
         System.out.println("Каталог импортирован");
     }
 
-    public void importCatalogue(String path){
-        try (FileInputStream fileInputStream = new FileInputStream
-                (path)) {
+    public void importCatalogue(String path) throws IOException, ClassNotFoundException{
+//        try {
 
+            FileInputStream fileInputStream = new FileInputStream
+                    ("src/mod5les5/task2/resources/save.ser");
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             catalogue = (FruitCatalogue) objectInputStream.readObject();
-        } catch (IOException | ClassNotFoundException exc) {
-            System.out.println("Ошибка ввода-вывода в импорте");
-            exc.printStackTrace();
-        }
+            fileInputStream.close();
+//        } catch (IOException | ClassNotFoundException exc) {
+//            exc.printStackTrace();
+//            System.out.println("Ошибка ввода-вывода в импорте");
+//        }
     }
 
     public String getFlag(String[] orderedFruit){
