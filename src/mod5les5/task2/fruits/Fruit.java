@@ -23,7 +23,6 @@ public abstract class Fruit implements Serializable{
     //- внутренний параметр freshness - отражает состояние свежести фрукта;
     protected FreshState freshness;
 
-
     //содержит общедоступный метод по-умолчанию для получения значения веса getWeight
     public double getWeight(){
         return weight;

@@ -1,8 +1,6 @@
 package mod4les4.task2.customers;
 
 import mod4les4.task2.fruits.Fruit;
-
-import java.io.Serializable;
 import java.util.Arrays;
 
 public class UniqueCustomer extends Customer  {

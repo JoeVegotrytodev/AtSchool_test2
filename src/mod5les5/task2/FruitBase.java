@@ -157,7 +157,7 @@ public class FruitBase {
                 return str;
             }
         }
-        return null;
+        return "null";
     }
 
     public void print() {
