@@ -63,4 +63,16 @@ public class LowNumbersDeleteQueue implements iQueue {
         else
             return false;
     }
+
+    public void sort(Swap method){
+        for (int j = 0; j < intArray.length - 1; j++) {
+            for (int i = 0; i < intArray.length - 1; i++){
+                if(method.needToSwap(intArray[i], intArray[i + 1])){
+                    int temp = intArray[i];
+                    intArray[i] = intArray[i + 1];
+                    intArray[i + 1] = temp;
+                }
+            }
+        }
+    }
 }
