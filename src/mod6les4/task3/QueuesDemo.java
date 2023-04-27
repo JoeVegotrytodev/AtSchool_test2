@@ -33,8 +33,7 @@ public class QueuesDemo {
             System.out.println("Add new element " + lowNumbersDeleteQueue);
         }
 
-        Swap desc = (int firstElm, int secondElm) -> firstElm < secondElm;
-        lowNumbersDeleteQueue.sort(desc);
+        lowNumbersDeleteQueue.sort((int firstElm, int secondElm) -> firstElm < secondElm);
         System.out.println("After sort: " + lowNumbersDeleteQueue);
 
         while(!lowNumbersDeleteQueue.isEmpty()){
