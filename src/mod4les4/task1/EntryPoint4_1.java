@@ -56,28 +56,46 @@ public class EntryPoint4_1 {
 
         //- Если не передано название операции, то программа завершается с соответствующим сообщением об ошибке.
         try{
-            input[0] = input[0];
+//            input[0] = input[0];
+            if(input.length == 0)
+                throw new ArrayIndexOutOfBoundsException();
         }
         catch(ArrayIndexOutOfBoundsException exc){
             System.out.println(" не передано название операции");
             System.exit(0);
         }
-        //- Если передано неподдерживаемое название класса, то программа завершается с соответствующим сообщением.
-        if(!((input[0].toLowerCase(Locale.ROOT).equals(new Double().toString())) |
-                (input[0].toLowerCase(Locale.ROOT).equals(new Exact().toString())) |
-                (input[0].toLowerCase(Locale.ROOT).equals(new Half().toString())) |
-                (input[0].toLowerCase(Locale.ROOT).equals(new Square().toString())))){
 
-            System.out.println("неподдерживаемое название класса " + input[0].toLowerCase(Locale.ROOT));
+        //не заметил как-то этого момента
+        String firstArgument = input[0].toLowerCase(Locale.ROOT);
+        //- Если передано неподдерживаемое название класса, то программа завершается с соответствующим сообщением.
+        if(!((firstArgument.equals(new Double().toString())) |
+                (firstArgument.equals(new Exact().toString())) |
+                (firstArgument.equals(new Half().toString())) |
+                (firstArgument.equals(new Square().toString())))){
+
+            System.out.println("Операция " + firstArgument + " не поддерживается");
             System.exit(0);
         }
 
         //- Если не передано хотя бы одно число, то программа завершается, с соответствующим сообщением об ошибке.
         try{
-            input[1] = input[1];
-            //проверку на число
+           //лямбу решил использовать, ведь более нигде не понадобится этот метод
+            IsNum isNum = (String string) -> {
+                for(int i = 0; i < string.length() - 1; i++){
+                    if(!Character.isDigit(string.charAt(i))){
+                        throw new NumberFormatException();
+                    }
+                }
+                return true;
+            };
+            //проверяем что второй элемент передан
+            if (input.length <= 1)
+                throw new ArrayIndexOutOfBoundsException();
+            //вопрос у меня почему по имени метода нельзя тут вызвать isNum ?
+            else
+                isNum.isNum(input[1]);
         }
-        catch(ArrayIndexOutOfBoundsException exc){
+        catch(ArrayIndexOutOfBoundsException | NumberFormatException exc){
             System.out.println("не передано хотя бы одно число");
             System.exit(0);
         }
