@@ -1,8 +1,8 @@
 package mod5les5.task2;
 
-import mod4les4.task2.customers.Customer;
-import mod4les4.task2.customers.FreshCustomer;
-import mod4les4.task2.customers.UniqueCustomer;
+import mod5les5.task2.customers.FreshCustomer;
+import mod5les5.task2.customers.UniqueCustomer;
+import mod5les5.task2.customers.Customer;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -71,24 +71,25 @@ public class Simulation {
             Cargo freshCustomerOrder = new Cargo(delivery);
             Cargo uniqueCustomerOrder = new Cargo(delivery);
 
-            customers[0] = new FreshCustomer(freshCustomerOrder.getFruits(), "Свежий клиент");
-            customers[1] = new UniqueCustomer(uniqueCustomerOrder.getFruits(), "Уникальный клиент");
+            Customer freshCustomer = new FreshCustomer(freshCustomerOrder.getFruits(), "Свежий клиент");
+            Customer uniqueCustomers = new UniqueCustomer(uniqueCustomerOrder.getFruits(), "Уникальный клиент");
 
-            //- далее для каждого покупателя:
-            for (Customer customer : customers) {
-                //    выводится информации о грузе
-                customer.printPurchases();
-                //    покупатель выбирает из груза интересующие его фрукты
-                customer.takeFruits();
-                //    покупатель выводит полученные фрукты
-                customer.printPurchases();
-                //    выводится информации об оставшемся грузе
-                //совершенно забыл про метод ремув класса Карго и создал отедльный массив фруктов покупателю
-                // и метод для его вывода вместо того чтобы работать с заказом класса Карго
-                customer.printUnlikedFruits();
-                //сделаю костыль
-                System.out.print("\n");
-            }
+            //    выводится информации о грузе
+            freshCustomer.printPurchases();
+            //    покупатель выбирает из груза интересующие его фрукты
+            freshCustomer.takeFruits(freshCustomerOrder);
+            //    покупатель выводит полученные фрукты
+            freshCustomer.printPurchases();
+            //    выводится информации об оставшемся грузе
+            //совершенно забыл про метод ремув класса Карго и создал отедльный массив фруктов покупателю
+            // и метод для его вывода вместо того чтобы работать с заказом класса Карго
+            freshCustomer.printUnlikedFruits();
+            System.out.print("\n");
+
+            uniqueCustomers.printPurchases();
+            uniqueCustomers.takeFruits(uniqueCustomerOrder);
+            uniqueCustomers.printPurchases();
+            uniqueCustomers.printUnlikedFruits();
         }
     }
 }

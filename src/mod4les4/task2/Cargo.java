@@ -2,8 +2,10 @@ package mod4les4.task2;
 //находится в пакете com.fruitbase
 
 import mod4les4.task2.fruits.Fruit;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 public class Cargo implements Delivery {
     //содержит поле массив Fruit - записи о фруктах, добавленных в груз
@@ -21,7 +23,7 @@ public class Cargo implements Delivery {
     }
 
     public Cargo(Delivery dev) {
-        this.orderedFruit = ((Cargo)dev).orderedFruit;
+        this.orderedFruit = ((Cargo) dev).orderedFruit;
 //       Или второй вариант с проверкой полученного типа
 //        this();
 //        if(dev instanceof Cargo)
@@ -74,49 +76,41 @@ public class Cargo implements Delivery {
         return " weight = " + weightSum + " price = " + priceSum;
     }
 
-//    - общедоступный метод removeFruit
+    //    - общедоступный метод removeFruit
 //    получает в качестве параметра фрукт
 //    если такого фрукта нет во внутреннем списке, то метод завершается
 //    иначе убирает фрукт с указанным названием из внутреннего массива и возвращает его
-//    public Fruit[] removeFruit(Fruit fruit) {
-    public Fruit removeFruit(Fruit fruit) {
+    public Fruit[] removeFruit(Fruit fruit) {
+        Fruit[] fruitArray = new Fruit[orderedFruit.length];
         //ищем совпадение фрукта
-        for (Fruit fruitFromArray : orderedFruit) {
-            if (fruit.getName().equals(fruitFromArray.getName()))
-                System.out.println("Fruit inside removeFruit " + fruit.getName());
-            return fruit;
-//                return deleteFruitFromArray(orderedFruit,fruit);
+        int indexOfMatch = 0;
+        for (int i = 0; i < orderedFruit.length; i++) {
+            if (orderedFruit[i].getName().equals(fruit.getName())) {
+                indexOfMatch = i;
+                break;
+            }
         }
-        return fruit;
-//        return orderedFruit;
-    }
-
-    /**
-     * Удаляет фрукт из массива фруктов
-     * @param fruitArray массив из которого удаляем фрукт
-     * @param fruitToDelete фрукт для удаления
-     * @return полученный массив без удаленного фрукта
-     */
-    private Fruit[] deleteFruitFromArray(Fruit[] fruitArray, Fruit fruitToDelete){
-        //если фрукт содержиться в массиве
-        if(getPosition(fruitArray,fruitToDelete) != -1){
-            //удаляем из него фрукт
-            return getArrayWithoutFruit(orderedFruit, getPosition(fruitArray,fruitToDelete));
+        for(int i = 0, j = 0; i < orderedFruit.length; i++){
+            if(i != indexOfMatch){
+                fruitArray[j] = orderedFruit[i];
+                j++;
+            }
         }
-        //иначе возвращем прежний массив
-        else return fruitArray;
+        orderedFruit = fruitArray;
+        return orderedFruit;
     }
 
     /**
      * Возврашает позицию в которой находится фрукт
-     * @param fruitArray массив в котором ищем фрукт
+     *
+     * @param fruitArray    массив в котором ищем фрукт
      * @param fruitToDelete фрукт позицию которого надо найти
      * @return позицию где находится фрукт
      */
-    private int getPosition(Fruit[] fruitArray, Fruit fruitToDelete){
+    private int getPosition(Fruit[] fruitArray, Fruit fruitToDelete) {
         //ищем позицию фрукта
-        for(int i = 0; i < fruitArray.length; i++){
-            if(fruitArray[i].getName().equals(fruitToDelete.getName())) {
+        for (int i = 0; i < fruitArray.length; i++) {
+            if (fruitArray[i].getName().equals(fruitToDelete.getName())) {
                 return i;
             }
         }
@@ -125,24 +119,25 @@ public class Cargo implements Delivery {
 
     /**
      * Возвращает массив без фрукта
-     * @param fruitsArray массив в котором убираем фрукт
+     *
+     * @param fruitsArray   массив в котором убираем фрукт
      * @param indexToDelete позиция фрукта
      * @return массив без фрукта
      */
-    private Fruit[] getArrayWithoutFruit(Fruit[] fruitsArray, int indexToDelete){
+    private Fruit[] getArrayWithoutFruit(Fruit[] fruitsArray, int indexToDelete) {
         //массив для хранения нужных фруктов, короче изначального на единицу
         Fruit[] fruitsWithoutUseless = new Fruit[fruitsArray.length - 1];
         //его позиция
         int indexOfNewArray = 0;
 
         //копируем в новый массив эл-ты до позиции удаляемого фрукта
-        for(int indexOfFruitArray = 0; indexOfFruitArray < indexToDelete; indexOfFruitArray++){
+        for (int indexOfFruitArray = 0; indexOfFruitArray < indexToDelete; indexOfFruitArray++) {
             fruitsWithoutUseless[indexOfNewArray] = fruitsArray[indexOfFruitArray];
             indexOfNewArray++;
         }
 
         //копируем в новый массив эл-ты после позиции удаляемого фрукта
-        for(int indexOfFruitArray = indexToDelete + 1; indexOfFruitArray < fruitsArray.length; indexOfFruitArray++){
+        for (int indexOfFruitArray = indexToDelete + 1; indexOfFruitArray < fruitsArray.length; indexOfFruitArray++) {
             fruitsWithoutUseless[indexOfNewArray] = fruitsArray[indexOfFruitArray];
             indexOfNewArray++;
         }

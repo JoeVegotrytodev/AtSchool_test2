@@ -1,7 +1,7 @@
 package mod5les5.task2.customers;
 
-import mod4les4.task2.fruits.Fruit;
-
+import mod5les5.task2.fruits.Fruit;
+import mod5les5.task2.Delivery;
 import java.io.Serializable;
 
 //Надо создать новый пакет customers и в нем создать новые классы
@@ -26,7 +26,7 @@ public abstract class Customer {
     //    имеет метод takeFruits, который должны реализовать наследникик
 //    метод принимает груз и сохраняет из него фрукты во внутренний массив,
 //    т.е. в грузе объекты заканчиваются.
-    public abstract void takeFruits();
+    public abstract void takeFruits(Delivery cargo);
 
 
     //    имеет метод printPurchases,  метод выводит полученные фрукты

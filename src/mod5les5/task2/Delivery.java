@@ -1,6 +1,6 @@
 package mod5les5.task2;
 
-import mod4les4.task2.fruits.Fruit;
+import mod5les5.task2.fruits.Fruit;
 
 import java.math.BigDecimal;
 
@@ -17,5 +17,5 @@ public interface Delivery {
     BigDecimal getPrice();
     void addFruit(Fruit fruit);
     Fruit[] getFruits();
-    Fruit removeFruit(Fruit fruit);
+    Fruit[] removeFruit(Fruit fruit);
 }

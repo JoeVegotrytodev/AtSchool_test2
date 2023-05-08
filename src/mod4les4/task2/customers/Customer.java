@@ -1,5 +1,6 @@
 package mod4les4.task2.customers;
 
+import mod4les4.task2.Delivery;
 import mod4les4.task2.fruits.Fruit;
 
 import java.io.Serializable;
@@ -23,10 +24,10 @@ public abstract class Customer {
         unlikedFruits = new Fruit[0];
     }
 
-    //    имеет метод takeFruits, который должны реализовать наследникик
+//    имеет метод takeFruits, который должны реализовать наследникик
 //    метод принимает груз и сохраняет из него фрукты во внутренний массив,
 //    т.е. в грузе объекты заканчиваются.
-    public abstract void takeFruits();
+    public abstract void takeFruits(Delivery delivery);
 
 
     //    имеет метод printPurchases,  метод выводит полученные фрукты

@@ -16,5 +16,5 @@ public interface Delivery {
     BigDecimal getPrice();
     void addFruit(Fruit fruit);
     Fruit[] getFruits();
-    Fruit removeFruit(Fruit fruit);
+    Fruit[] removeFruit(Fruit fruit);
 }

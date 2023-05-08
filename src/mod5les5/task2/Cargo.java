@@ -1,7 +1,7 @@
 package mod5les5.task2;
 //находится в пакете com.fruitbase
 
-import mod4les4.task2.fruits.Fruit;
+import mod5les5.task2.fruits.Fruit;
 
 import java.math.BigDecimal;
 
@@ -74,21 +74,28 @@ public class Cargo implements Delivery {
         return " weight = " + weightSum + " price = " + priceSum;
     }
 
-//    - общедоступный метод removeFruit
+    //    - общедоступный метод removeFruit
 //    получает в качестве параметра фрукт
 //    если такого фрукта нет во внутреннем списке, то метод завершается
 //    иначе убирает фрукт с указанным названием из внутреннего массива и возвращает его
-//    public Fruit[] removeFruit(Fruit fruit) {
-    public Fruit removeFruit(Fruit fruit) {
+    public Fruit[] removeFruit(Fruit fruit) {
+        Fruit[] fruitArray = new Fruit[orderedFruit.length];
         //ищем совпадение фрукта
-        for (Fruit fruitFromArray : orderedFruit) {
-            if (fruit.getName().equals(fruitFromArray.getName()))
-                System.out.println("Fruit inside removeFruit " + fruit.getName());
-            return fruit;
-//                return deleteFruitFromArray(orderedFruit,fruit);
+        int indexOfMatch = 0;
+        for (int i = 0; i < orderedFruit.length; i++) {
+            if (orderedFruit[i].getName().equals(fruit.getName())) {
+                indexOfMatch = i;
+                break;
+            }
         }
-        return fruit;
-//        return orderedFruit;
+        for(int i = 0, j = 0; i < orderedFruit.length; i++){
+            if(i != indexOfMatch){
+                fruitArray[j] = orderedFruit[i];
+                j++;
+            }
+        }
+        orderedFruit = fruitArray;
+        return orderedFruit;
     }
 
     /**

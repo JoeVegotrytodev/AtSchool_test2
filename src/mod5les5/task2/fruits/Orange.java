@@ -1,7 +1,7 @@
 package mod5les5.task2.fruits;
 
-import mod4les4.task2.fruits.FreshState;
-import mod4les4.task2.fruits.Fruit;
+import mod5les5.task2.fruits.FreshState;
+import mod5les5.task2.fruits.Fruit;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

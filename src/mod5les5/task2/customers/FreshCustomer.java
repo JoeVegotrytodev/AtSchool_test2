@@ -1,9 +1,8 @@
 package mod5les5.task2.customers;
 
-import mod4les4.task2.customers.Customer;
-import mod4les4.task2.fruits.Fruit;
-
-import java.io.Serializable;
+import mod5les5.task2.Delivery;
+import mod5les5.task2.customers.Customer;
+import mod5les5.task2.fruits.Fruit;
 
 public class FreshCustomer extends Customer {
 
@@ -15,9 +14,9 @@ public class FreshCustomer extends Customer {
 
     //    реалиация метода takeFruits
     //    выбираются только свежие фрукты
-    public void takeFruits() {
+    public void takeFruits(Delivery cargo) {
         //создаем массив для запоминания свежих фруктов
-        Fruit[] freshFruits = new Fruit[getPurchases().length];
+        Fruit[] freshFruits = new Fruit[cargo.getFruits().length];
         //для записи фрукта в массив хранит текущее положение поледнего эл-та
         int freshFruitsIndex = 0;
 

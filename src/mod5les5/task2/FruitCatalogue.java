@@ -1,7 +1,7 @@
 package mod5les5.task2;
 //находится в пакете com.fruitbase
 
-import mod4les4.task2.fruits.*;
+import mod5les5.task2.fruits.*;
 
 import java.io.Serializable;
 
