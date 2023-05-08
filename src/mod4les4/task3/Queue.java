@@ -5,12 +5,12 @@ import java.util.Arrays;
 public class Queue implements iQueue {
     private int[] intArray;
 
-    Queue(int... inputArray){
+    Queue(int... inputArray) {
         intArray = inputArray.clone();
     }
 
     @Override
-    public int remove(){
+    public int remove() {
         int[] tempArray = new int[intArray.length - 1];
         int res = intArray[0];
 
@@ -23,7 +23,7 @@ public class Queue implements iQueue {
     }
 
     @Override
-    public void add(int value){
+    public void add(int value) {
         int[] tempArray = new int[intArray.length + 1];
 
         for (int i = 0; i < intArray.length; i++) {
@@ -35,8 +35,8 @@ public class Queue implements iQueue {
     }
 
     @Override
-    public boolean isEmpty(){
-        if(intArray.length == 0)
+    public boolean isEmpty() {
+        if (intArray.length == 0)
             return true;
         else
             return false;
@@ -44,8 +44,12 @@ public class Queue implements iQueue {
 
     @Override
     public String toString() {
-        return "Queue{" +
-                "intArray=" + Arrays.toString(intArray) +
-                '}';
+        String outStr = "оставшиеся элементы: ";
+        if (intArray.length > 0)
+            for (int i = 0; i < intArray.length; i++)
+                outStr = outStr.concat(intArray[i] + " ");
+        else
+            outStr = "элементы отсутствуют";
+        return outStr;
     }
 }

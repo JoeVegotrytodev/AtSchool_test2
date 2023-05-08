@@ -6,14 +6,18 @@ public class LowNumbersDeleteQueue implements iQueue{
     private int[] intArray;
 
     public LowNumbersDeleteQueue(int... inputArray) {
-        intArray = inputArray;
+        intArray = inputArray.clone();
     }
 
     @Override
     public String toString() {
-        return "LowNumbersDeleteQueue{" +
-                "intArray=" + Arrays.toString(intArray) +
-                '}';
+        String outStr = "оставшиеся элементы: ";
+        if (intArray.length > 0)
+            for (int i = 0; i < intArray.length; i++)
+                outStr = outStr.concat(intArray[i] + " ");
+        else
+            outStr = "элементы отсутствуют";
+        return outStr;
     }
 
     @Override
