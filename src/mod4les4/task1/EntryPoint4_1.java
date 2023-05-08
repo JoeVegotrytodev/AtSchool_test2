@@ -96,7 +96,7 @@ public class EntryPoint4_1 {
                 isNum.isNum(input[1]);
         }
         catch(ArrayIndexOutOfBoundsException | NumberFormatException exc){
-            System.out.println("не передано хотя бы одно число");
+            System.out.println("Не переданы числа для операции.");
             System.exit(0);
         }
     }
