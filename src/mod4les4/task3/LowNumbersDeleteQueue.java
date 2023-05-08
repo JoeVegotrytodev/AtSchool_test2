@@ -67,4 +67,11 @@ public class LowNumbersDeleteQueue implements iQueue{
         else
             return false;
     }
+
+    public String anotherToString(){
+        String outStr = "";
+        for (int i = 0; i < intArray.length; i++)
+            outStr = outStr.concat(intArray[i] + " ");
+        return outStr;
+    }
 }

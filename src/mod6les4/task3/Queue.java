@@ -44,9 +44,20 @@ public class Queue implements iQueue {
 
     @Override
     public String toString() {
-        return "Queue{" +
-                "intArray=" + Arrays.toString(intArray) +
-                '}';
+        String outStr = "оставшиеся элементы: ";
+        if (intArray.length > 0)
+            for (int i = 0; i < intArray.length; i++)
+                outStr = outStr.concat(intArray[i] + " ");
+        else
+            outStr = "элементы отсутствуют";
+        return outStr;
+    }
+
+    public String anotherToString(){
+        String outStr = "";
+        for (int i = 0; i < intArray.length; i++)
+            outStr = outStr.concat(intArray[i] + " ");
+        return outStr;
     }
 
     public void sort(Swap method){

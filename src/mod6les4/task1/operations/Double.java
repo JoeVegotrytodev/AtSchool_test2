@@ -1,4 +1,6 @@
-package mod6les4.task1;
+package mod6les4.task1.operations;
+
+import mod6les4.task1.Function;
 
 //- у класса Double метод evaluate умножает полученный параметр на 2
 public class Double implements Function {

@@ -8,9 +8,9 @@ public class QueuesDemo {
         for (int i = 0; i < args.length; i++) {
             queue.add(Integer.parseInt(args[i]));
         }
-        System.out.println("Очередь #1\nДобавленные элементы: "+ queue);
+        System.out.println("Очередь #1\nДобавленные элементы: " + queue.anotherToString());
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             System.out.println("Удален элемент: " + queue.remove() + ", " + queue);
         }
         System.out.println("\n");
@@ -20,11 +20,10 @@ public class QueuesDemo {
         for (int i = 0; i < args.length; i++) {
             lowNumbersDeleteQueue.add(Integer.parseInt(args[i]));
         }
-        System.out.println("Очередь #2\nДобавленные элементы: "+ lowNumbersDeleteQueue);
+        System.out.println("Очередь #2\nДобавленные элементы: " + lowNumbersDeleteQueue.anotherToString());
 
         while(!lowNumbersDeleteQueue.isEmpty()){
             System.out.println("Удален элемент: " + lowNumbersDeleteQueue.remove() + ", " + lowNumbersDeleteQueue);
         }
-
     }
 }
