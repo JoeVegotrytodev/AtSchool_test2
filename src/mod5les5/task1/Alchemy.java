@@ -1,13 +1,10 @@
 package mod5les5.task1;
 
+import mod5les5.task1.elements.NatureElement;
+
 import java.util.NoSuchElementException;
 
-public class Alchemist {
-//    через аргументы командной строки передаются названия элементов
-//    для переданных аргументов создаются объекты соответствующих классов.
-//    Если хотя бы для одного из аргументов нельзя создать объект, то программа завершается.
-//    Далее попарно объединяются объекты и выводятся соответствующие сообщения.
-//    Т.е. для объектов Air Air Fire Earth в результате объединения получатся два объекта: Pressure и Lava
+public class Alchemy {
     public static void main(String[] args) {
         NatureElement[] elementsArray = new NatureElement[args.length];
 

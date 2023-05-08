@@ -1,8 +1,8 @@
-package mod5les5.task1;
+package mod5les5.task1.elements;
 
 public class Energy extends NatureElement {
 
-    NatureElement connect(NatureElement elementToConnect){
+    public NatureElement connect(NatureElement elementToConnect){
         //обработку следующих формул:
         //    Energy + Water = Steam
         //    Water + Energy = Steam

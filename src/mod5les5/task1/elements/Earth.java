@@ -1,10 +1,10 @@
-package mod5les5.task1;
+package mod5les5.task1.elements;
 
 public class Earth extends NatureElement {
     final private String name = "Earth";
 
     @Override
-    NatureElement connect(NatureElement elementToConnect) {
+    public NatureElement connect(NatureElement elementToConnect) {
         if(elementToConnect instanceof Earth){
             Pressure pressure = new Pressure();
             System.out.println(this + " + " + elementToConnect + " = " + pressure);
@@ -27,8 +27,8 @@ public class Earth extends NatureElement {
             return dust;
         }
         else{
-            System.out.println("There is no new element ");
-            return null;
+//            System.out.println("There is no new element ");
+            throw new UnsupportedOperationException();
         }
     }
 

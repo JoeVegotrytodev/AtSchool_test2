@@ -1,4 +1,4 @@
-package mod5les5.task1;
+package mod5les5.task1.elements;
 
 import java.util.Locale;
 
@@ -7,7 +7,9 @@ import java.util.Locale;
 public abstract class NatureElement {
 //    содержит метод connect, который в качестве параметра получает другой NatureElement
 //    содержит пустое тело
-    abstract NatureElement connect(NatureElement elementToConnect);
+     public NatureElement connect(NatureElement elementToConnect){
+         throw new UnsupportedOperationException();
+     }
 //    содержит статический метод create
 //    в качестве параметра принимает строку - название базового элемента
 //    по названию создает базовый элемент
