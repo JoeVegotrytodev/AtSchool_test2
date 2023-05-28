@@ -7,25 +7,20 @@ import mod7les9.task1.vegetables.Cucumber;
 import mod7les9.task1.vegetables.Tomato;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class EntryPoint7_9 {
     public static void main(String[] args) {
-        ArrayList<Plant> plantsList = new ArrayList<Plant>(4);
-        ArrayList<Fruit> multifruit  = new ArrayList<>(2);
+        ArrayList<Plant> plantsList = new ArrayList<>(4);
         plantsList.add(new Apple());
         plantsList.add(new Banana());
         plantsList.add(new Tomato());
         plantsList.add(new Cucumber());
 
+        ArrayList<Plant> multifruit  = plantsList.stream()
+                .filter(plant -> plant instanceof Fruit)
+                .collect(Collectors.toCollection(ArrayList::new));
 
-        plantsList.stream().
-                filter((plants) ->{
-                    System.out.println("Hi there");
-                    if(plants instanceof Fruit)
-                        multifruit.add((Fruit) plants);
-                    System.out.println("plantsList : " + plantsList);
-                    System.out.println("multiftuit : " + multifruit);
-                    return false;
-        });
+        multifruit.forEach(System.out::println);
     }
 }
