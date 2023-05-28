@@ -2,13 +2,11 @@ package mod7les6.task3;
 
 import mod7les6.task3.fruits.Apple;
 import mod7les6.task3.fruits.Banana;
-import mod7les6.task3.fruits.Fruit;
 import mod7les6.task3.vegetables.Cucumber;
 import mod7les6.task3.vegetables.Tomato;
-import mod7les6.task3.vegetables.Vegetable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
+import java.util.function.BiConsumer;
 
 public class EntryPoint7_6 {
 
@@ -24,25 +22,114 @@ public class EntryPoint7_6 {
     }
 
     public static void main(String[] args) {
-        Fruit apple = new Apple();
-        Fruit banana = new Banana();
-        Vegetable tomato = new Tomato();
-        Vegetable cucumber = new Cucumber();
-
         ArrayList<Plant> arrayPlants = new ArrayList<>(5);
-        arrayPlants.add(apple);
-        arrayPlants.add(banana);
-        arrayPlants.add(tomato);
-        arrayPlants.add(cucumber);
-        arrayPlants.add(new Tomato());
-
         Basket<Plant> plantBasket = new Basket<>();
-        plantBasket.addItem(apple);
-        plantBasket.addItem(banana);
-        plantBasket.addItem(tomato);
-        plantBasket.addItem(cucumber);
-        plantBasket.addItem(banana);
 
+        //генерит только эелменты по разному , ведь ключ - название элемента по условию
+        addPlantsToHMap(plantBasket);
         plantBasket.printBasket();
+
+        System.out.println(" - - - ");
+
+        addPlantsToCollection(arrayPlants);
+        arrayPlants.forEach((s) -> System.out.println(s.toString()));
+    }
+
+    static void addPlantsToCollection(ArrayList collection){
+        BiConsumer<ArrayList, Plant> addElement = ArrayList::add;
+
+        collection.forEach((plant) -> {
+            Random random = new Random();
+            switch (random.nextInt(4)){
+                case 0 : {
+                    plant = new Apple();
+                    collection.add(plant);
+                    break;
+                }
+                case 1 : {
+                    addElement.accept(collection, new Banana());
+                    break;
+                }
+                case 2 : {
+                    addElement.accept(collection, new Tomato());
+                    break;
+                }
+                case 3 : {
+                    addElement.accept(collection, new Cucumber());
+                    break;
+                }
+            }
+        });
+//        for (int i = 0; i < 5; i++) {
+//            Random random = new Random();
+//            switch (random.nextInt(4)){
+//                case 0 : {
+//                    addElement.accept(collection, new Apple());
+//                    break;
+//                }
+//                case 1 : {
+//                    addElement.accept(collection, new Banana());
+//                    break;
+//                }
+//                case 2 : {
+//                    addElement.accept(collection, new Tomato());
+//                    break;
+//                }
+//                case 3 : {
+//                    addElement.accept(collection, new Cucumber());
+//                    break;
+//                }
+//            }
+//        }
+    }
+
+    static void addPlantsToHMap(Basket basket){
+        BiConsumer<Basket, Plant> addItem = (Basket, Plant) -> basket.addItem(Plant);
+        System.out.println("- - -");
+
+        basket.getKeys().forEach((s) -> {
+            Random random = new Random();
+            switch (random.nextInt(4)){
+                case 0 : {
+                    addItem.accept(basket, new Apple());
+                    break;
+                }
+                case 1 : {
+                    addItem.accept(basket, new Banana());
+                    break;
+                }
+                case 2 : {
+                    addItem.accept(basket, new Tomato());
+                    break;
+                }
+                case 3 : {
+                    addItem.accept(basket, new Cucumber());
+                    break;
+                }
+            }
+        });
+        basket.printBasket();
+        System.out.println("- - -");
+//        for (int i = 0; i < 5; i++) {
+//            Random random = new Random();
+//            switch (random.nextInt(4)){
+//                case 0 : {
+//                    addItem.accept(basket, new Apple());
+//                    break;
+//                }
+//                case 1 : {
+//                    addItem.accept(basket, new Banana());
+//                    break;
+//                }
+//                case 2 : {
+//                    addItem.accept(basket, new Tomato());
+//                    break;
+//                }
+//                case 3 : {
+//                    addItem.accept(basket, new Cucumber());
+//                    break;
+//                }
+//            }
+//        }
     }
 }

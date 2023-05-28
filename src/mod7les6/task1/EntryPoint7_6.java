@@ -14,16 +14,15 @@ public class EntryPoint7_6 {
         Vegetable tomato = new Tomato();
         Vegetable cucumber = new Cucumber();
 
-        Basket<Fruit> fruitBasket = new Basket<>();
+        Basket<Fruit> fruitBasket = new Basket<>(Fruit.class);
         fruitBasket.addItem(apple);
         fruitBasket.addItem(banana);
         fruitBasket.printBasket();
         System.out.println();
 
-        Basket<Vegetable> vegetableBasket = new Basket<>();
+        Basket<Vegetable> vegetableBasket = new Basket<>(Vegetable.class);
         vegetableBasket.addItem(tomato);
         vegetableBasket.addItem(cucumber);
         vegetableBasket.printBasket();
-
     }
 }
