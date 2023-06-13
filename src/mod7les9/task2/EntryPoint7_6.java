@@ -5,8 +5,7 @@ import mod7les9.task2.fruits.Banana;
 import mod7les9.task2.vegetables.Cucumber;
 import mod7les9.task2.vegetables.Tomato;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 import java.util.function.BiConsumer;
 
 public class EntryPoint7_6 {
@@ -53,11 +52,15 @@ public class EntryPoint7_6 {
         BiConsumer<String, Plant> addItem = basket.getBasket()::put;
 
         collection.clear();
-        collection.add(new Cucumber());
-        collection.add(new Cucumber());
-        collection.add(new Cucumber());
-        collection.add(new Tomato());
-        collection.add(new Tomato());
+        //как в хэшсет добавлять несколько одинаковый объектов
+        Cucumber cucumber = new Cucumber();
+        Tomato tomato = new Tomato();
+
+        collection.add(cucumber);
+        collection.add(cucumber);
+        collection.add(cucumber);
+        collection.add(tomato);
+        collection.add(tomato);
 
         collection.forEach((listValue) -> addItem.accept(listValue.toString(), listValue));
     }
