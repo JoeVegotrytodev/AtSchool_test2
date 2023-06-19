@@ -8,10 +8,40 @@ public class EntryPoint54_1 {
     public static String stringVar = "Циклом называется многократное выполнение одних и тех же действий.";
 
     public static void main(String[] args) {
+        char letter = args[0].charAt(0);
+        int result = lettersCount(letter);
+
+        //Пример: Через аргументы передается "Ц", Вывод: 0
+        System.out.println("Через аргументы передается \"" + letter + "\", " +
+                "Вывод: " + result);
+
+//        /*
+//        Значение символа передается через аргумент командной строки.
+//         */
+//        char symbol = args[0].charAt(0);
+//
+//        /*
+//        Используя только методы класса String (без циклов, условий), напишите программу,
+//        которая печатает количество букв (без пробелов и точки) в переменной
+//        до определенного символа (не включая его).
+//         */
+//
+//        //получаем элементы до символа
+//        String result = stringVar.substring(0, stringVar.indexOf(symbol));
+//        //удаляем точки и пробелы. Как-то красивее можно было сделать ?
+//        result = result.replace('.', ' ');
+//        result = result.replaceAll(" ", "");
+//
+//
+//        //Пример: Через аргументы передается "Ц", Вывод: 0
+//        System.out.println("Через аргументы передается \"" + symbol + "\", " +
+//                "Вывод: " + result.length());
+    }
+
+    static int lettersCount(char letter) {
         /*
         Значение символа передается через аргумент командной строки.
          */
-        char symbol = args[0].charAt(0);
 
         /*
         Используя только методы класса String (без циклов, условий), напишите программу,
@@ -20,14 +50,11 @@ public class EntryPoint54_1 {
          */
 
         //получаем элементы до символа
-        String result = stringVar.substring(0, stringVar.indexOf(symbol));
+        String result = stringVar.substring(0, stringVar.indexOf(letter));
         //удаляем точки и пробелы. Как-то красивее можно было сделать ?
         result = result.replace('.', ' ');
         result = result.replaceAll(" ", "");
 
-
-        //Пример: Через аргументы передается "Ц", Вывод: 0
-        System.out.println("Через аргументы передается \"" + symbol + "\", " +
-                "Вывод: " + result.length());
+        return result.length();
     }
 }
