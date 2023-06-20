@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="mod2les54.StringToIntegerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-06-20T21:15:07" hostname="DESKTOP-MK11D5O" time="0.005">
+  <properties/>
+  <testcase name="Тест проверкия явлется ли переданное число интом" classname="mod2les54.StringToIntegerTest" time="0.001"/>
+  <testcase name="Тест приведения строки к числу" classname="mod2les54.StringToIntegerTest" time="0.0"/>
+  <testcase name="Тест проверки вхоядщей строки на некорректные символы" classname="mod2les54.StringToIntegerTest" time="0.002"/>
+  <system-out><![CDATA[В строке присутствуют лишние символы !
+В строке присутствуют лишние символы !
+Слишком большое число для формата инт !
+Слишком большое число для формата инт !
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

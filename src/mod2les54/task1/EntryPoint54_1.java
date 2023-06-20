@@ -38,7 +38,7 @@ public class EntryPoint54_1 {
 //                "Вывод: " + result.length());
     }
 
-    static int lettersCount(char letter) {
+    public static int lettersCount(char letter) {
         /*
         Значение символа передается через аргумент командной строки.
          */

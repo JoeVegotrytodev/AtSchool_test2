@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="mod2les54.PathCutterTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-06-20T21:15:07" hostname="DESKTOP-MK11D5O" time="0.003">
+  <properties/>
+  <testcase name="Тест выделения пути до файла со слешем" classname="mod2les54.PathCutterTest" time="0.001"/>
+  <testcase name="Тест выделения пути до файла с обратным слэшем" classname="mod2les54.PathCutterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

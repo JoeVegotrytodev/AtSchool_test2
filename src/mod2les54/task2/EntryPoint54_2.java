@@ -43,7 +43,7 @@ public class EntryPoint54_2 {
 //            System.out.println("Введен некорректный путь до файла.");
     }
 
-    static String[] pathCutter(String[] inputPath) {
+    public static String[] pathCutter(String[] inputPath) {
 
         StringBuilder fullPath = new StringBuilder();
 
