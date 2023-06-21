@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class StringToIntegerTest {
 
     @Test
-    @DisplayName("Тест проверкия явлется ли переданное число интом")
+    @DisplayName("Тест проверки явлется ли переданное число интом")
     @Tag("toInt")
     void isIntegerTest(){
         Assertions.assertTrue(EntryPoint54_6.isInteger("45"));
