@@ -13,7 +13,7 @@ public class Fire extends NatureElement {
 //    Если по схеме нет нового элемента, то выводится сообщение "Нет нового элемента"
 //    и возвращается null.
     @Override
-    NatureElement connect(NatureElement elementToConnect) {
+    public NatureElement connect(NatureElement elementToConnect) {
 //        if(elementToConnect instanceof Fire){
 //            System.out.println(this + " + " + elementToConnect + " = " + this);
 //            return new Fire();

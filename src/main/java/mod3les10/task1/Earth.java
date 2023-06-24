@@ -4,7 +4,7 @@ public class Earth extends NatureElement {
     final private String name = "Earth";
 
     @Override
-    NatureElement connect(NatureElement elementToConnect) {
+    public NatureElement connect(NatureElement elementToConnect) {
         if(elementToConnect instanceof Earth){
             Pressure pressure = new Pressure();
             System.out.println(this + " + " + elementToConnect + " = " + pressure);

@@ -2,16 +2,16 @@ package mod3les10.task1;
 
 import mod3les10.task1.NatureElement;
 
-public class Pressure extends NatureElement {
+public class Sea extends NatureElement {
 
-    NatureElement connect(NatureElement elementToConnect){
+    public NatureElement connect(NatureElement elementToConnect){
         System.out.println("There is no new element to connect");
         return null;
     }
 
     @Override
     public String toString() {
-        return "Pressure";
+        return "Sea";
     }
 
 }

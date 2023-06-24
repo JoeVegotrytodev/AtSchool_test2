@@ -4,7 +4,7 @@ public class Air extends NatureElement {
     final private String name = "Air";
 
     @Override
-    NatureElement connect(NatureElement elementToConnect) {
+    public NatureElement connect(NatureElement elementToConnect) {
         if(elementToConnect instanceof Air){
             Pressure pressure = new Pressure();
             System.out.println(this + " + " + elementToConnect + " = " + pressure);

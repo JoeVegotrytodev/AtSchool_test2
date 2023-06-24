@@ -7,7 +7,7 @@ import java.util.Locale;
 public abstract class NatureElement {
 //    содержит метод connect, который в качестве параметра получает другой NatureElement
 //    содержит пустое тело
-    abstract NatureElement connect(NatureElement elementToConnect);
+    public abstract NatureElement connect(NatureElement elementToConnect);
 //    содержит статический метод create
 //    в качестве параметра принимает строку - название базового элемента
 //    по названию создает базовый элемент

@@ -4,7 +4,7 @@ public class Water extends NatureElement {
     final private String name = "Water";
 
     @Override
-    NatureElement connect(NatureElement elementToConnect) {
+    public NatureElement connect(NatureElement elementToConnect) {
         if(elementToConnect instanceof Water){
             Sea sea = new Sea();
             System.out.println(this + " + " + elementToConnect + " = " + sea);
