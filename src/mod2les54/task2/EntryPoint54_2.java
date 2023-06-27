@@ -11,7 +11,7 @@ package mod2les54.task2;
 public class EntryPoint54_2 {
     public static void main(String[] args) {
 
-        String[] cuttedPath = pathCutter(args);
+        String[] cuttedPath = pathCutter(args[0]);
 
         if (cuttedPath != null) {
             System.out.println("Путь: " + cuttedPath[0]);
@@ -43,13 +43,7 @@ public class EntryPoint54_2 {
 //            System.out.println("Введен некорректный путь до файла.");
     }
 
-    public static String[] pathCutter(String[] inputPath) {
-
-        StringBuilder fullPath = new StringBuilder();
-
-        for (String str : inputPath) {
-            fullPath.append(str);
-        }
+    public static String[] pathCutter(String fullPath) {
 
         //храним номер, где встретили разделитель
         int position = 0;
