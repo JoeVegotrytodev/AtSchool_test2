@@ -20,33 +20,38 @@ public class EntryPoint7_6 {
         System.out.println("- - - - - - - -");
 
         addPlantsToHMap(plantBasket, arrayPlants);
+        //переделал на лямбду и forEach в методе printBasket
         plantBasket.printBasket();
     }
 
     static void addPlantsToCollection(ArrayList<Plant> collection){
         BiConsumer<ArrayList<Plant>, Plant> addElement = ArrayList::add;
 
-        for (int i = 0; i < 5; i++) {
-            Random random = new Random();
-            switch (random.nextInt(4)){
-                case 0 : {
-                    addElement.accept(collection, new Apple());
-                    break;
-                }
-                case 1 : {
-                    addElement.accept(collection, new Banana());
-                    break;
-                }
-                case 2 : {
-                    addElement.accept(collection, new Tomato());
-                    break;
-                }
-                case 3 : {
-                    addElement.accept(collection, new Cucumber());
-                    break;
-                }
-            }
-        }
+        addElement.accept(collection, new Apple());
+        addElement.accept(collection, new Banana());
+        addElement.accept(collection, new Tomato());
+        addElement.accept(collection, new Cucumber());
+//        for (int i = 0; i < 5; i++) {
+//            Random random = new Random();
+//            switch (random.nextInt(4)){
+//                case 0 : {
+//                    addElement.accept(collection, new Apple());
+//                    break;
+//                }
+//                case 1 : {
+//                    addElement.accept(collection, new Banana());
+//                    break;
+//                }
+//                case 2 : {
+//                    addElement.accept(collection, new Tomato());
+//                    break;
+//                }
+//                case 3 : {
+//                    addElement.accept(collection, new Cucumber());
+//                    break;
+//                }
+//            }
+//        }
     }
 
     static void addPlantsToHMap(Basket<Plant> basket, ArrayList<Plant> collection){

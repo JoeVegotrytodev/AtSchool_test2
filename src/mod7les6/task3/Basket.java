@@ -1,6 +1,7 @@
 package mod7les6.task3;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class Basket<T> {
 
@@ -11,9 +12,9 @@ public class Basket<T> {
 //    }
 
     public void printBasket(){
-        for (String str : basket.keySet()) {
-            System.out.println(str + " " +  basket.get(str).getClass().getSimpleName());
-        }
+        Set<String> myIterable = basket.keySet();
+
+        myIterable.forEach((key) -> System.out.println(key + " " + basket.get(key).getClass().getSimpleName()));
     }
 
     public HashMap<String, T> getBasket(){
