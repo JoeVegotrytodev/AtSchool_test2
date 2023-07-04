@@ -25,10 +25,21 @@ public class LoginPage extends Pages {
     private WebElement passwordField;
 
     @FindBy(css = "#login-button")
-    private WebElement LoginButton;
-
+    private WebElement loginButton;
 
     public String getTextFromLogo(){
         return loginPageLogotype.getText();
+    }
+
+    public void enterLogin(String login){
+        userNameField.sendKeys(login);
+    }
+
+    public void enterPassword(String password){
+        passwordField.sendKeys(password);
+    }
+
+    public void loginButtonClick(){
+        loginButton.click();
     }
 }
