@@ -3,14 +3,14 @@ package mod11les3.tests;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
 import mod11les3.pages.LoginPage;
-import mod11les3.pages.ProductPage;
+import mod11les3.pages.ProductPages;
 import mod11les3.properties.TestProperties;
 import mod11les3.properties.WebDriver;
 import org.junit.jupiter.api.*;
 
 public class LoginTest extends WebDriver {
     public static LoginPage loginPage;
-    public static ProductPage productPage;
+    public static ProductPages productPage;
 
     @BeforeEach
     public void setup() {
@@ -39,7 +39,7 @@ public class LoginTest extends WebDriver {
         //нажать кнопки логин
         loginPage.loginButtonClick();
 
-        productPage = new ProductPage(driver);
+        productPage = new ProductPages(driver);
 //      проверяется, что перешли на страницу ProductPage
 //      (перешли на страницу с нужным адресом
 //      и есть плашка с текстом Products)
