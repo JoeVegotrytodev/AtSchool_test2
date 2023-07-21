@@ -12,4 +12,6 @@ public interface MovieRepository {
     void delete(Movie movie);
 
     List<Movie> get(Director d);
+
+    List<Director> get(List<String> genres);
 }

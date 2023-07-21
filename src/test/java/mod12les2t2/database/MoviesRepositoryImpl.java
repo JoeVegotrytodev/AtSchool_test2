@@ -16,14 +16,31 @@ public class MoviesRepositoryImpl implements MovieRepository {
     Connection connection;
     ResultSet resultSet;
 
+    public static final String selectMovieByIdQuery = "SELECT * " +
+            "FROM \"TestSchema\".\"Movies\" " +
+            "WHERE id = ?";
+
+    public static final String updateMovieQuery = "INSERT INTO \"TestSchema\".\"Movies\" " +
+            "VALUES (?, ?, ?, ?, ?)";
+    public static final String deleteMovieQuery = "DELETE FROM \"TestSchema\".\"Movies\" "+
+            "WHERE id = ?";
+    public static final String getMovieListByDirectorQuery = "SELECT * " +
+            "FROM \"TestSchema\".\"Movies\"" +
+            "WHERE \"TestSchema\".\"Movies\".\"Director\" = ?";
+
+    public static final String getDirectorsByGenreByQuery = "SELECT * " +
+            "FROM \"TestSchema\".\"Movies\"" +
+            "WHERE \"TestSchema\".\"Movies\".\"genre\" = ?";
+
     public MoviesRepositoryImpl(Connection connection){
         this.connection = connection;
     }
 
+    @Override
     public Movie get(int id){
-        String selectMovieByIdQuery = "SELECT * " +
-                "FROM \"TestSchema\".\"Movies\" " +
-                "WHERE id = ?";
+//        String selectMovieByIdQuery = "SELECT * " +
+//                "FROM \"TestSchema\".\"Movies\" " +
+//                "WHERE id = ?";
 
         Movie resultMovie = null;
 
@@ -43,9 +60,10 @@ public class MoviesRepositoryImpl implements MovieRepository {
         return resultMovie;
     }
 
+    @Override
     public void save(Movie movie){
-        String updateMovieQuery = "INSERT INTO \"TestSchema\".\"Movies\" " +
-                "VALUES (?, ?, ?, ?, ?)";
+//        String updateMovieQuery = "INSERT INTO \"TestSchema\".\"Movies\" " +
+//                "VALUES (?, ?, ?, ?, ?)";
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(updateMovieQuery)){
             preparedStatement.setInt(1, movie.getId());
@@ -61,9 +79,10 @@ public class MoviesRepositoryImpl implements MovieRepository {
         }
     }
 
+    @Override
     public void delete(Movie movie){
-        String deleteMovieQuery = "DELETE FROM \"TestSchema\".\"Movies\" "+
-                "WHERE id = ?";
+//        String deleteMovieQuery = "DELETE FROM \"TestSchema\".\"Movies\" "+
+//                "WHERE id = ?";
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(deleteMovieQuery)){
             preparedStatement.setInt(1, movie.getId());
@@ -76,10 +95,11 @@ public class MoviesRepositoryImpl implements MovieRepository {
         }
     }
 
+    @Override
     public List<Movie> get(Director d){
-        String getMovieListByDirectorQuery = "SELECT * " +
-                "FROM \"TestSchema\".\"Movies\"" +
-                "WHERE \"TestSchema\".\"Movies\".\"Director\" = ?";
+//        String getMovieListByDirectorQuery = "SELECT * " +
+//                "FROM \"TestSchema\".\"Movies\"" +
+//                "WHERE \"TestSchema\".\"Movies\".\"Director\" = ?";
 
         List<Movie> resultListOfMovies = new ArrayList<>();
 
@@ -103,5 +123,29 @@ public class MoviesRepositoryImpl implements MovieRepository {
         }
 
         return resultListOfMovies;
+    }
+
+    @Override
+    public List<Director> get(List<String> genres) {
+        List<Director> resultListOfDirectors = new ArrayList<>();
+
+        try(PreparedStatement preparedStatement = connection.prepareStatement(getDirectorsByGenreByQuery)){
+
+            for(String genre: genres){
+                preparedStatement.setString(1, genre);
+
+                resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                do{
+                    resultListOfDirectors.add(new DirectorRepositoryImpl(connection).
+                            get(resultSet.getInt(3)));
+                }while (resultSet.next());
+            }
+        }
+        catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+
+        return resultListOfDirectors;
     }
 }

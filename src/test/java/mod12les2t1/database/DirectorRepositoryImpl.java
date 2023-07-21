@@ -12,14 +12,25 @@ public class DirectorRepositoryImpl implements DirectorRepository {
     Connection connection;
     ResultSet resultSet;
 
+    public static final String selectDirectorByIdQuery = "SELECT * " +
+            "FROM \"TestSchema\".\"Directors\" " +
+            "WHERE id = ?";
+
+    public static final String updateDirectorQuery = "INSERT INTO \"TestSchema\".\"Directors\" " +
+            "VALUES (?, ?, ?, ?, ?)";
+
+    public static final String deleteDirectorQuery = "DELETE FROM \"TestSchema\".\"Directors\" "+
+            "WHERE id = ?";
+
     public DirectorRepositoryImpl(Connection connection) {
         this.connection = connection;
     }
 
+    @Override
     public Director get(int id){
-        String selectDirectorByIdQuery = "SELECT * " +
-                "FROM \"TestSchema\".\"Directors\" " +
-                "WHERE id = ?";
+//        String selectDirectorByIdQuery = "SELECT * " +
+//                "FROM \"TestSchema\".\"Directors\" " +
+//                "WHERE id = ?";
         Director resultDirector = null;
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(selectDirectorByIdQuery)){
@@ -38,9 +49,10 @@ public class DirectorRepositoryImpl implements DirectorRepository {
         return resultDirector;
     }
 
+    @Override
     public void save(Director director){
-        String updateDirectorQuery = "INSERT INTO \"TestSchema\".\"Directors\" " +
-                "VALUES (?, ?, ?, ?, ?)";
+//        String updateDirectorQuery = "INSERT INTO \"TestSchema\".\"Directors\" " +
+//                "VALUES (?, ?, ?, ?, ?)";
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(updateDirectorQuery)){
             preparedStatement.setInt(1, director.getId());
@@ -56,9 +68,10 @@ public class DirectorRepositoryImpl implements DirectorRepository {
         }
     }
 
+    @Override
     public void delete(Director director){
-        String deleteDirectorQuery = "DELETE FROM \"TestSchema\".\"Directors\" "+
-                "WHERE id = ?";
+//        String deleteDirectorQuery = "DELETE FROM \"TestSchema\".\"Directors\" "+
+//                "WHERE id = ?";
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(deleteDirectorQuery)){
             preparedStatement.setInt(1, director.getId());

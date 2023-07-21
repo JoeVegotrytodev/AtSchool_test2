@@ -51,7 +51,13 @@ public class Director {
                 && this.lastName.equals(anotherDirector.getLastName())
                 && this.birthDate.equals(anotherDirector.getBirthDate())
                 && this.country.equals(anotherDirector.getCountry()))
-            return true;
+        {
+            System.out.println(this.id + " " +  anotherDirector.getId());
+            System.out.println(this.firstName + " " +  anotherDirector.getFirstName());
+            System.out.println(this.lastName + " " +  anotherDirector.getLastName());
+            System.out.println(this.birthDate + " " +  anotherDirector.getBirthDate());
+            System.out.println(this.country + " " +  anotherDirector.getCountry());
+            return true;}
         else {
             System.out.println(this.id + " " +  anotherDirector.getId());
             System.out.println(this.firstName + " " +  anotherDirector.getFirstName());
