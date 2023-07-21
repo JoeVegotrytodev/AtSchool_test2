@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: mod11les3.tests.AddToCartTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.920 s -- in mod11les3.tests.AddToCartTest

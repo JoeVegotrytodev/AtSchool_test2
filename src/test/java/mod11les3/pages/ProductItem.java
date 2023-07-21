@@ -1,6 +1,5 @@
 package mod11les3.pages;
 
-import mod11les3.pages.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

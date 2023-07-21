@@ -1,4 +1,0 @@
-homepage = https://www.saucedemo.com/
-firefoxdriver = src/test/resources/drivers/geckodriver.exe
-login = standard_user
-password = secret_sauce

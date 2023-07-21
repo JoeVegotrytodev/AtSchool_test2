@@ -1,5 +1,6 @@
 package mod11les3.properties;
 
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
@@ -7,12 +8,11 @@ import java.time.Duration;
 /**
  * Настройка дравйера тестов
  */
-public class WebDriver {
+public class WebDriverBaseTest {
 
-    public static org.openqa.selenium.WebDriver driver;
+    public org.openqa.selenium.WebDriver driver;
 
-    //    @BeforeClass
-    public static void driverInit(){
+    public void driverInit(){
         //определение пути до драйвера
         System.setProperty("webdriver.gecko.driver", TestProperties.getProperty("firefoxdriver"));
         //создание экземпляра драйвера: для запуска браузера необходимо создать объект драйвера
@@ -25,11 +25,10 @@ public class WebDriver {
         driver.get(TestProperties.getProperty("homepage"));
     }
 
-    //    @AfterClass
-    public static void driverTearDown(){
+    //Сделал аннотацию АфтерИч для теста в родительском классе
+    @AfterEach
+    public void driverTearDown(){
         //закрытие драйвера
         driver.quit();
     }
-
-
 }

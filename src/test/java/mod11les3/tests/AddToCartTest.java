@@ -5,14 +5,14 @@ import io.qameta.allure.Owner;
 import mod11les3.pages.*;
 import mod11les3.properties.Product;
 import mod11les3.properties.TestProperties;
-import mod11les3.properties.WebDriver;
+import mod11les3.properties.WebDriverBaseTest;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebElement;
 
 import java.math.BigDecimal;
 import java.util.*;
 
-public class AddToCartTest extends WebDriver {
+public class AddToCartTest extends WebDriverBaseTest {
     public static LoginPage loginPage;
     public static ProductPages productPage;
     public static  CartPage cartPage;
@@ -167,10 +167,10 @@ public class AddToCartTest extends WebDriver {
 
     }
 
-    @AfterEach
-    public void tearDown() {
-        //мог бы вызвать и внутри теста, но хотелось структуру создать...
-        driverTearDown();
-    }
+//    @AfterEach
+//    public void tearDown() {
+//        //мог бы вызвать и внутри теста, но хотелось структуру создать...
+////        driverTearDown();
+//    }
 
 }

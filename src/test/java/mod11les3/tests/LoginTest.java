@@ -5,10 +5,10 @@ import io.qameta.allure.Owner;
 import mod11les3.pages.LoginPage;
 import mod11les3.pages.ProductPages;
 import mod11les3.properties.TestProperties;
-import mod11les3.properties.WebDriver;
+import mod11les3.properties.WebDriverBaseTest;
 import org.junit.jupiter.api.*;
 
-public class LoginTest extends WebDriver {
+public class LoginTest extends WebDriverBaseTest {
     public static LoginPage loginPage;
     public static ProductPages productPage;
 
@@ -60,10 +60,9 @@ public class LoginTest extends WebDriver {
         Assertions.assertEquals("Swag Labs", loginPage.getTextFromLogo());
     }
 
-    @AfterEach
-    public void tearDown() {
-        //мог бы вызвать и внутри теста, но хотелось структуру создать...
-        driverTearDown();
-    }
+//    @AfterEach - брал сделал в родительском классе
+//    public void tearDown() {
+//        driverTearDown();
+//    }
 
 }
