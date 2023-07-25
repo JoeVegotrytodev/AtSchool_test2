@@ -124,28 +124,4 @@ public class MoviesRepositoryImpl implements MovieRepository {
 
         return resultListOfMovies;
     }
-
-    @Override
-    public List<Director> get(List<String> genres) {
-        List<Director> resultListOfDirectors = new ArrayList<>();
-
-        try(PreparedStatement preparedStatement = connection.prepareStatement(getDirectorsByGenreByQuery)){
-
-            for(String genre: genres){
-                preparedStatement.setString(1, genre);
-
-                resultSet = preparedStatement.executeQuery();
-                resultSet.next();
-                do{
-                    resultListOfDirectors.add(new DirectorRepositoryImpl(connection).
-                            get(resultSet.getInt(3)));
-                }while (resultSet.next());
-            }
-        }
-        catch (SQLException sqlException){
-            sqlException.printStackTrace();
-        }
-
-        return resultListOfDirectors;
-    }
 }

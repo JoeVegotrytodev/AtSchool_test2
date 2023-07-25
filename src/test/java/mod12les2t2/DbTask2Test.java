@@ -1,7 +1,9 @@
 package mod12les2t2;
 
 import mod12les2t1.data.Director;
+import mod12les2t1.data.DirectorRepository;
 import mod12les2t1.database.Database;
+import mod12les2t1.database.DirectorRepositoryImpl;
 import mod12les2t2.data.Movie;
 import mod12les2t2.data.MovieRepository;
 import mod12les2t2.database.MoviesRepositoryImpl;
@@ -18,6 +20,7 @@ import java.util.List;
 public class DbTask2Test {
 
     static MovieRepository movieRepository;
+    static DirectorRepository directorRepository;
     @BeforeAll
     static void init(){
         movieRepository = new MoviesRepositoryImpl(Database.getConnection());
@@ -26,7 +29,6 @@ public class DbTask2Test {
     @Test
     @Order(1)
     public void getMovieByIdTest(){
-
         Movie expectedMovie = new Movie(1,
                 "the fast and the furious",
                 "action",
@@ -39,7 +41,6 @@ public class DbTask2Test {
     @Test
     @Order(2)
     public void saveMovieTest(){
-
         Movie movieToSave = new Movie(2,
                 "2 Fast 2 Furious",
                 "action",
@@ -53,10 +54,11 @@ public class DbTask2Test {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     public void getFilmsByAuthorTest(){
 
         ArrayList<Movie> expectedMoviesList = new ArrayList<>();
+
         Director someDirector = new Director(1, "Ivanov", "Petr",
                 Date.valueOf(LocalDate.of(2023, 7, 13)), "Russia");
         Movie movieToSave = new Movie(2,
@@ -68,17 +70,17 @@ public class DbTask2Test {
         expectedMoviesList.add(movieToSave);
         expectedMoviesList.add(new MoviesRepositoryImpl(Database.getConnection()).get(1));
 
-
         movieRepository.save(movieToSave);
 
         Assertions.assertEquals(expectedMoviesList.get(1),movieRepository.get(someDirector).get(0));
         Assertions.assertEquals(expectedMoviesList.get(0),movieRepository.get(someDirector).get(1));
+
+        movieRepository.delete(movieToSave);
     }
 
     @Test
-    @Order(4)
+    @Order(3)
     public void deleteMovieTest(){
-
         Movie movieToDelete = new Movie(2,
                 "2 Fast 2 Furious",
                 "action",
@@ -94,12 +96,12 @@ public class DbTask2Test {
     @Test
     @Order(5)
     public void getDirectorsByGenresTest(){
-        MovieRepository movieRepository = new MoviesRepositoryImpl(Database.getConnection());
+        directorRepository = new DirectorRepositoryImpl(Database.getConnection());
 
         List<String> genres = new ArrayList<>();
         genres.add("action");
 
-        List<Director> directors = movieRepository.get(genres);
+        List<Director> directors = directorRepository.get(genres);
 
         directors.stream().forEach((director -> Assertions.assertEquals(new Director(1, "Ivanov",
                 "Petr",
