@@ -51,6 +51,7 @@ public class DbTask2Test {
         movieRepository.save(movieToSave);
 
         Assertions.assertTrue(movieToSave.equals(movieRepository.get(2)));
+
     }
 
     @Test
