@@ -10,17 +10,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-public class EntryPoint_13_4Tests {
-    private static ApacheHttpTests apacheHttpTests;
+public class EntryPoint134Tests {
+    private static DummyJsonClientImpl dummyJsonClient;
 
     @BeforeEach
     public void setup(){
-        apacheHttpTests = new ApacheHttpTests();
+        dummyJsonClient = new DummyJsonClientImpl();
     }
 
     @Test
     public void getUserTest(){
-        Response response = apacheHttpTests.getUser(1);
+        Response response = dummyJsonClient.getUser(1);
         Object responceObj = response.getResponceObj();
         User user = null;
 
@@ -35,13 +35,13 @@ public class EntryPoint_13_4Tests {
     @Test
     public void loginTest(){
         Response responseLogin = null;
-        Response responseGetUser = apacheHttpTests.getUser(1);
+        Response responseGetUser = dummyJsonClient.getUser(1);
         Object responceObj = responseGetUser.getResponceObj();
         User user;
 
         if(responceObj instanceof User) {
             user = (User) responceObj;
-            responseLogin = apacheHttpTests.login(new User(user.getId(), user.getLogin(), user.getPassword()));
+            responseLogin = dummyJsonClient.login(new User(user.getId(), user.getLogin(), user.getPassword()));
         }
 
         Assertions.assertEquals(200, responseLogin.getResponceCode());
@@ -49,7 +49,7 @@ public class EntryPoint_13_4Tests {
 
     @Test
     public void postsTest(){
-        Response responseGetUser = apacheHttpTests.getUser(1);
+        Response responseGetUser = dummyJsonClient.getUser(1);
         Object responceObj = responseGetUser.getResponceObj();
         User user = null;
 
@@ -57,7 +57,7 @@ public class EntryPoint_13_4Tests {
 
         if(responceObj instanceof User) {
             user = (User) responceObj;
-            responseToken = apacheHttpTests.login(new User(user.getId(), user.getLogin(), user.getPassword()));
+            responseToken = dummyJsonClient.login(new User(user.getId(), user.getLogin(), user.getPassword()));
         }
 
         Token token;
@@ -65,7 +65,7 @@ public class EntryPoint_13_4Tests {
         Response responsePosts = null;
         if(tokenObj instanceof Token){
             token = (Token) tokenObj;
-            responsePosts =  apacheHttpTests.getPosts(new User(user.getId(), user.getLogin(), user.getPassword()), token);
+            responsePosts =  dummyJsonClient.getPosts(new User(user.getId(), user.getLogin(), user.getPassword()), token);
         }
 
         ArrayList<Post> posts = new ArrayList<>();

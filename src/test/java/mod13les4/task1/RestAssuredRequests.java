@@ -70,7 +70,7 @@ public class RestAssuredRequests {
 
         given()
                 .auth()
-                .oauth2("Bearer 123")
+                .oauth2("123")
         .when()
                 .get("https://httpbin.org/bearer")
         .then()

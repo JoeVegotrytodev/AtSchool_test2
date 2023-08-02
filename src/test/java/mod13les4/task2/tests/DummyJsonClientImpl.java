@@ -17,7 +17,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class ApacheHttpTests implements DummyJsonClient{
+public class DummyJsonClientImpl implements DummyJsonClient{
 
     public Response getUser(int userId) {
         try (CloseableHttpClient closeableHttpClient = HttpClients.createDefault()) {
