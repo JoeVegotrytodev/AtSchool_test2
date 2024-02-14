@@ -7,15 +7,20 @@ import mod11les3.pages.ProductPages;
 import mod11les3.properties.TestProperties;
 import mod11les3.properties.WebDriverBaseTest;
 import org.junit.jupiter.api.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LoginTest extends WebDriverBaseTest {
     public static LoginPage loginPage;
     public static ProductPages productPage;
+    private Logger logger;
 
     @BeforeEach
     public void setup() {
         driverInit();
         loginPage = new LoginPage(driver);
+        //Инициализируем логгер
+        logger = LoggerFactory.getLogger(LoginTest.class);
     }
 
     @Test  //тестовые методы в Junit помечаются аннотацией Test.
@@ -23,7 +28,9 @@ public class LoginTest extends WebDriverBaseTest {
     @Link("https://antitreningi.ru/student/lessons/lesson?course_id=257643&lesson_id=6188173")
     @DisplayName("Проверка открытия старницы логина")
     public void loginTest() {
-        Assertions.assertEquals("Swag Labs", loginPage.getTextFromLogo());
+        logger.info("before assertions : ");
+        Assertions.assertEquals("Swag Labs", loginPage.getTextFromLogo(), "оказывается у ассертов есть текст для вывода е мае" +
+                "удобный инструмент прям !");
     }
 
     @Test
@@ -31,7 +38,7 @@ public class LoginTest extends WebDriverBaseTest {
     @Link("https://antitreningi.ru/student/lessons/lesson?course_id=257643&lesson_id=6188173")
     @DisplayName("Проверка логина и возврат на домашнюю страницу")
     public void loginTestTask2(){
-        //открыли страницу         loginPage = new LoginPage(driver);
+        //открыли страницу loginPage = new LoginPage(driver);
         //ввели логин
         loginPage.enterLogin(TestProperties.getProperty("login"));
         //ввели пароль
@@ -60,7 +67,7 @@ public class LoginTest extends WebDriverBaseTest {
         Assertions.assertEquals("Swag Labs", loginPage.getTextFromLogo());
     }
 
-//    @AfterEach - брал сделал в родительском классе
+//    @AfterEach - убрал сделал в родительском классе
 //    public void tearDown() {
 //        driverTearDown();
 //    }

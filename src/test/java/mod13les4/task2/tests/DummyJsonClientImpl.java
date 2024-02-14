@@ -5,6 +5,7 @@ import mod13les4.task2.data.Post;
 import mod13les4.task2.data.Response;
 import mod13les4.task2.data.Token;
 import mod13les4.task2.data.User;
+import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -72,7 +73,8 @@ public class DummyJsonClientImpl implements DummyJsonClient{
         try (CloseableHttpClient closeableHttpClient = HttpClients.createDefault()) {
             ArrayList<Post> posts = new ArrayList<>();
 
-            HttpGet httpGet = new HttpGet("https://dummyjson.com/posts/user/" + u.getId());
+//            HttpGet httpGet = new HttpGet("https://dummyjson.com/posts/user/" + u.getId());
+            HttpGet httpGet = new HttpGet("https://dummyjson.com/auth/posts/user/" + u.getId());
             httpGet.addHeader("Authorization", "Bearer " + token.toString());
             httpGet.addHeader("Content-Type", "application/json");
 
