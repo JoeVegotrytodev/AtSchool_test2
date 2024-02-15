@@ -1,7 +1,8 @@
 package mod11les3.tests;
 
-import io.qameta.allure.Link;
-import io.qameta.allure.Owner;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import mod11les3.pages.LoginPage;
 import mod11les3.pages.ProductPages;
 import mod11les3.properties.TestProperties;
@@ -27,6 +28,12 @@ public class LoginTest extends WebDriverBaseTest {
     @Owner("Музафаров Айрат")
     @Link("https://antitreningi.ru/student/lessons/lesson?course_id=257643&lesson_id=6188173")
     @DisplayName("Проверка открытия старницы логина")
+    @Description("Вот в общем тест проверяю использование ааннотации Дескрипшен" +
+            "интересно, наверное, оно для того чтобы писать болеее полнотекстовое описание")
+//   ишью как понял номер задачи
+    @Issue("AUTH-322")
+//    Серьезность - ну тут все логично, но значение из енама берем
+    @Severity(SeverityLevel.CRITICAL)
     public void loginTest() {
         logger.info("before assertions : ");
         Assertions.assertEquals("Swag Labs", loginPage.getTextFromLogo(), "оказывается у ассертов есть текст для вывода е мае" +
