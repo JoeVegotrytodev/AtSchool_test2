@@ -42,7 +42,7 @@ public class ProductItem extends Pages {
     }
 
     public List<WebElement> getProductsHeader(){
-        return driver.findElements(By.xpath("//div[@class='inventory_item_name']"));
+        return driver.findElements(By.xpath("//div[@class='inventory_item_name ']"));
     }
 
 }

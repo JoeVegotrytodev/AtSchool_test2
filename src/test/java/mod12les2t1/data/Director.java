@@ -2,7 +2,7 @@ package mod12les2t1.data;
 
 import java.sql.Date;
 
-public class Director {
+public class Director{
     private int id;
     private String firstName;
     private String lastName;
@@ -37,6 +37,11 @@ public class Director {
         return country;
     }
 
+    @Override
+    public String toString() {
+        return id + ",  " + firstName + ",  " + lastName + ",  " +
+                birthDate + ",  " + country;
+    }
 
     @Override
     public boolean equals(Object object){

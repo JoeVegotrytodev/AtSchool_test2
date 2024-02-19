@@ -1,5 +1,6 @@
 package mod11les3.pages;
 
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +33,9 @@ public class LoginPage extends Pages {
     }
 
     public void enterLogin(String login){
+        Assertions.assertTrue(userNameField.isDisplayed());
+        Assertions.assertTrue(userNameField.isEnabled());
+
         userNameField.sendKeys(login);
     }
 

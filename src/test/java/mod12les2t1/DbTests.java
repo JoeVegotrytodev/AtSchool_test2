@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -15,18 +17,29 @@ import java.time.LocalDate;
 public class DbTests {
 
     static DirectorRepository directorRepositoryImpl;
+    private static Logger logger;
 
     @BeforeAll
     static void init(){
+        logger = LoggerFactory.getLogger(DbTests.class);
         directorRepositoryImpl = new  DirectorRepositoryImpl(Database.getConnection());
     }
+
     @Test
     @Order(1)
     public void getClientByIdTest(){
 
         Director expectedDirector = new Director(1, "Ivanov", "Petr", Date.valueOf(LocalDate.of(2023, 7, 13)), "Russia");
 
-        Assertions.assertTrue(expectedDirector.equals(directorRepositoryImpl.get(1)));
+        System.out.println("NULL ??? = " + expectedDirector);
+        logger.info("- - - - LOG _ - - - - " + expectedDirector);
+        Director dirFromDB = directorRepositoryImpl.get(1);
+        logger.info("- - - - LOG _ - - - - " + " in DB = "+ dirFromDB);
+
+        Assertions.assertNotNull(expectedDirector);
+        Assertions.assertNotNull(dirFromDB);
+
+        Assertions.assertEquals(expectedDirector, dirFromDB);
     }
 
     @Test

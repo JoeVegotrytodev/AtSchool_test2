@@ -1,5 +1,6 @@
 package mod11les3.properties;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
@@ -14,12 +15,13 @@ import java.time.Duration;
 public class WebDriverBaseTest {
 
     public org.openqa.selenium.WebDriver driver;
-    private Logger logger;
+    private static Logger logger;
 
-    public static void driverInit(){
-        //Инициализируем логгер
-        Logger logger = LoggerFactory.getLogger(WebDriverBaseTest.class);
+    static {
+        logger = LoggerFactory.getLogger(WebDriverBaseTest.class);
+    }
 
+    public  void driverInit(){
         //Чтобы сделать запись в лог, можно использовать множество методов, которые показывают, с каким уровнем будут записи. Например:
         //тут лог уровня инфо с текстом
         logger.info("- - - - - - - -Перед созданием драйвера- - - - - - - -");
@@ -28,7 +30,7 @@ public class WebDriverBaseTest {
         System.setProperty("webdriver.gecko.driver", TestProperties.getProperty("firefoxdriver"));
         logger.info("- - - - - - - -Чтение пути до драйвера- - - - - - - -");
         //создание экземпляра драйвера: для запуска браузера необходимо создать объект драйвера
-        WebDriver driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
         logger.info("- - - - - - - -Создание экземпляра драйвера- - - - - - - -");
         //окно разворачивается на полный экран, для отображения хода теста
         driver.manage().window().maximize();

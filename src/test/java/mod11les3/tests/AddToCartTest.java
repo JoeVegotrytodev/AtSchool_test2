@@ -8,6 +8,7 @@ import mod11les3.properties.TestProperties;
 import mod11les3.properties.WebDriverBaseTest;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebElement;
+import java.time.Duration;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -31,9 +32,12 @@ public class AddToCartTest extends WebDriverBaseTest {
     @Link("https://antitreningi.ru/student/lessons/lesson?course_id=257643&lesson_id=6188173")
     @DisplayName("Проверка доавбление товаров в корзину")
     public void addToCartTest() {
-        //открыли страницу         loginPage = new LoginPage(driver);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(45));
         //ввели логин
-        loginPage.enterLogin(TestProperties.getProperty("login"));
+        String login = TestProperties.getProperty("login");
+        System.out.println(" - - - - LOGIN - - - - - =" + login);
+
+        loginPage.enterLogin(login);
         //ввели пароль
         loginPage.enterPassword(TestProperties.getProperty("password"));
         //нажать кнопки логин
@@ -46,6 +50,7 @@ public class AddToCartTest extends WebDriverBaseTest {
 
         //определяемся с продуктами, которые хотим взять
         ProductItem productItem = new ProductItem(driver);
+
         List<WebElement> listOfItemsToBuy = pickSomeProducts(
                 productPage.getProductsButtons(),
                 productItem.getProductsDescription(),
@@ -54,7 +59,7 @@ public class AddToCartTest extends WebDriverBaseTest {
                 );
 
         //для каждой вещи нажимаем добавить в корзину
-        listOfItemsToBuy.stream().forEach((item)-> item.click());
+        listOfItemsToBuy.stream().forEach(WebElement::click);
 
         //проверка значка корзины на добавление вещей
         Assertions.assertEquals(counterOfItemsToBuy, productPage.getCartButtonLogoNumber());
@@ -97,13 +102,14 @@ public class AddToCartTest extends WebDriverBaseTest {
                                               List<WebElement> productsDescs,
                                               List<WebElement> productsHeaders,
                                               List<WebElement> productsPrices){
-        List<WebElement> outputListOfProducts = new ArrayList<WebElement>();
+        List<WebElement> outputListOfProducts = new ArrayList<>();
 
         counterOfItemsToBuy = getRandomIndex();
         products = new Product[counterOfItemsToBuy];
 
         for(int i = 0; i < counterOfItemsToBuy; i++){
             outputListOfProducts.add(productsButtons.get(i));
+//            System.out.println("product " + i + " = " + productsButtons.get(i).getText());
 
             products[i] = new Product(convertStringToBigDecimal(productsPrices.get(i).getText()),
                     productsHeaders.get(i).getText(),

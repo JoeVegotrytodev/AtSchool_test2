@@ -8,3 +8,4 @@
 /src/main/resources/logback.xml
 /src/main/resources/old_133_logback.xml
 /allure-report/
+/allure-results/
